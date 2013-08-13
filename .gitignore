@@ -1,0 +1,8 @@
+# IDE Android Studio
+*.iml
+
+# Build & gen files
+build/
+
+# Miscellanous
+*~
