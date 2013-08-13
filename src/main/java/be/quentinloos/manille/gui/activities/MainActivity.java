@@ -14,6 +14,8 @@ import android.widget.TextView;
 import be.quentinloos.manille.R;
 import be.quentinloos.manille.core.Manille;
 import be.quentinloos.manille.core.ManilleFree;
+import be.quentinloos.manille.core.ManilleScore;
+import be.quentinloos.manille.core.ManilleTurns;
 import be.quentinloos.manille.gui.dialogs.ManilleDialog;
 import be.quentinloos.manille.util.ScoreAdapter;
 
@@ -28,13 +30,16 @@ public class MainActivity extends Activity implements ManilleDialog.NoticeDialog
 
     private Manille manille;
     private ScoreAdapter adapter;
+    private SharedPreferences preferences;
+    private TextView sum1;
+    private TextView sum2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
         TextView team1 = (TextView) findViewById(R.id.team1);
         TextView team2 = (TextView) findViewById(R.id.team2);
         team1.setText(preferences.getString("team1", getString(R.string.valueTeam1)));
@@ -48,14 +53,14 @@ public class MainActivity extends Activity implements ManilleDialog.NoticeDialog
         manille.endTurns(25, 35);
         manille.endTurns(25, 35);
 
-        TextView sum1 = (TextView) findViewById(R.id.sum1);
-        TextView sum2 = (TextView) findViewById(R.id.sum2);
-        sum1.setText(Integer.toString(manille.getScores()[0]));
-        sum2.setText(Integer.toString(manille.getScores()[1]));
+        sum1 = (TextView) findViewById(R.id.sum1);
+        sum2 = (TextView) findViewById(R.id.sum2);
 
         ListView lv = (ListView) findViewById(R.id.listView);
         adapter = new ScoreAdapter(this, manille.getTurns());
         lv.setAdapter(adapter);
+
+        refresh();
     }
 
 
@@ -86,7 +91,6 @@ public class MainActivity extends Activity implements ManilleDialog.NoticeDialog
 
         switch (requestCode) {
             case RESULT_SETTINGS:
-                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
                 TextView team1 = (TextView) findViewById(R.id.team1);
                 TextView team2 = (TextView) findViewById(R.id.team2);
                 team1.setText(preferences.getString("team1", getString(R.string.valueTeam1)));
@@ -99,20 +103,26 @@ public class MainActivity extends Activity implements ManilleDialog.NoticeDialog
     public void onDialogManilleFreeClick(DialogFragment dialog) {
         manille = new ManilleFree();
         adapter.clear();
-        adapter.notifyDataSetChanged();
+        refresh();
     }
 
     @Override
     public void onDialogManilleScoreClick(DialogFragment dialog) {
-        manille = new ManilleFree();
+        manille = new ManilleScore(Integer.parseInt(preferences.getString("score", getString(R.string.valueScore))));
         adapter.clear();
-        adapter.notifyDataSetChanged();
+        refresh();
     }
 
     @Override
     public void onDialogManilleTurnsClick(DialogFragment dialog) {
-        manille = new ManilleFree();
+        manille = new ManilleTurns(Integer.parseInt(preferences.getString("turns", getString(R.string.valueTurns))));
         adapter.clear();
+        refresh();
+    }
+
+    private void refresh() {
         adapter.notifyDataSetChanged();
+        sum1.setText(Integer.toString(manille.getScores()[0]));
+        sum2.setText(Integer.toString(manille.getScores()[1]));
     }
 }
