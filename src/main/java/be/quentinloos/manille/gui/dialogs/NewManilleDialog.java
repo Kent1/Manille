@@ -8,7 +8,6 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.widget.Toast;
 
 import be.quentinloos.manille.R;
 
@@ -17,7 +16,7 @@ import be.quentinloos.manille.R;
  *
  * @author Quentin Loos <contact@quentinloos.be>
  */
-public class ManilleDialog extends DialogFragment {
+public class NewManilleDialog extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -37,15 +36,15 @@ public class ManilleDialog extends DialogFragment {
                 // 2. ManilleTurns
                 switch (which) {
                     case 0:
-                        mListener.onDialogManilleFreeClick(ManilleDialog.this);
+                        mListener.onDialogManilleFreeClick(NewManilleDialog.this);
                         break;
 
                     case 1:
-                        mListener.onDialogManilleScoreClick(ManilleDialog.this);
+                        mListener.onDialogManilleScoreClick(NewManilleDialog.this);
                         break;
 
                     case 2:
-                        mListener.onDialogManilleTurnsClick(ManilleDialog.this);
+                        mListener.onDialogManilleTurnsClick(NewManilleDialog.this);
                         break;
                 }
             }

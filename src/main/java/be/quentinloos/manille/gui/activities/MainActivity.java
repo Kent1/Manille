@@ -18,7 +18,7 @@ import be.quentinloos.manille.core.ManilleFree;
 import be.quentinloos.manille.core.ManilleScore;
 import be.quentinloos.manille.core.ManilleTurns;
 import be.quentinloos.manille.gui.dialogs.AddTurnDialog;
-import be.quentinloos.manille.gui.dialogs.ManilleDialog;
+import be.quentinloos.manille.gui.dialogs.NewManilleDialog;
 import be.quentinloos.manille.util.ScoreAdapter;
 
 /**
@@ -26,7 +26,7 @@ import be.quentinloos.manille.util.ScoreAdapter;
  *
  * @author Quentin Loos <contact@quentinloos.be>
  */
-public class MainActivity extends Activity implements ManilleDialog.NoticeDialogListener, AddTurnDialog.NoticeDialogListener {
+public class MainActivity extends Activity implements NewManilleDialog.NoticeDialogListener, AddTurnDialog.NoticeDialogListener {
 
     private static final int RESULT_SETTINGS = 1;
 
@@ -75,7 +75,7 @@ public class MainActivity extends Activity implements ManilleDialog.NoticeDialog
                 turnDialog.show(getFragmentManager(), "turn");
                 return true;
             case R.id.action_new:
-                DialogFragment manilleDialog = new ManilleDialog();
+                DialogFragment manilleDialog = new NewManilleDialog();
                 manilleDialog.show(getFragmentManager(), "type");
                 return true;
             case R.id.action_settings:
