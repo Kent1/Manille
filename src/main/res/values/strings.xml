@@ -1,29 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--Activity_main -->
     <string name="app_name">Manille</string>
     <string name="title_activity_main">Manille</string>
 
-    <!-- Menu -->
-    <string name="action_settings">Settings</string>
-
-    <string name="action_new">Nouvelle partie</string>
-    <string name="pick_a_type">Choisissez un type</string>
-    <string name="action_add">Ajouter une donne</string>
-    <string name="ok">OK</string>
-    <string name="cancel">Annuler</string>
-    <string name="exception_score">Score incorrect</string>
-    <string-array name="manille_array">
-        <item>Manille Libre</item>
-        <item>Manille à %1$d points</item>
-        <item>Manille à %1$d donnes</item>
-    </string-array>
-
-    <!--Activity_main -->
     <string name="title">Manille libre - 11 donnes actuellement</string>
     <string name="points_team_1">35</string>
-    <string name="team1">Nous</string>
-    <string name="team2">Eux</string>
     <string name="points_team_2">24</string>
+
+    <!-- Menu -->
+    <string name="action_settings">Paramètres</string>
+    <string name="action_new">Nouvelle partie</string>
+    <string name="action_add">Ajouter une donne</string>
 
 </resources>

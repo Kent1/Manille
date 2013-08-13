@@ -26,8 +26,8 @@ public class ManilleDialog extends DialogFragment {
         builder.setTitle(R.string.pick_a_type);
         String[] array = getResources().getStringArray(R.array.manille_array);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        array[1] = String.format(array[1], Integer.parseInt(preferences.getString("score", getString(R.string.valueScore))));
-        array[2] = String.format(array[2], Integer.parseInt(preferences.getString("turns", getString(R.string.valueTurns))));
+        array[1] = String.format(array[1], Integer.parseInt(preferences.getString("score", getString(R.string.score_limit))));
+        array[2] = String.format(array[2], Integer.parseInt(preferences.getString("turns", getString(R.string.turn_limit))));
         builder.setItems(array, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 // The 'which' argument contains the index position

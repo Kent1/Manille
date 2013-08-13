@@ -52,7 +52,7 @@
                 <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="@string/team1"
+                        android:text="@string/name_team_1"
                         android:id="@+id/team1"
                         android:textSize="20sp"
                         android:gravity="center|right"
@@ -75,7 +75,7 @@
                 <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="@string/team2"
+                        android:text="@string/name_team_2"
                         android:id="@+id/team2"
                         android:textSize="20sp"
                         android:gravity="center|left"

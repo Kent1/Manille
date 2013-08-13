@@ -2,28 +2,28 @@
 
     <EditTextPreference
             android:key="team1"
-            android:title="@string/editTeam1"
-            android:defaultValue="@string/valueTeam1"
+            android:title="@string/setting_team_1"
+            android:defaultValue="@string/name_team_1"
             android:selectAllOnFocus="true"
-            android:inputType="textCapWords"
+            android:inputType="textCapSentences"
             android:capitalize="words"
             android:singleLine="true"
             android:maxLines="1" />
 
     <EditTextPreference
             android:key="team2"
-            android:title="@string/editTeam2"
-            android:defaultValue="@string/valueTeam2"
+            android:title="@string/setting_team_2"
+            android:defaultValue="@string/name_team_2"
             android:selectAllOnFocus="true"
-            android:inputType="textCapWords"
+            android:inputType="textCapSentences"
             android:capitalize="words"
             android:singleLine="true"
             android:maxLines="1" />
 
     <EditTextPreference
             android:key="score"
-            android:title="@string/editScore"
-            android:defaultValue="@string/valueScore"
+            android:title="@string/setting_score_limit"
+            android:defaultValue="@string/score_limit"
             android:selectAllOnFocus="true"
             android:inputType="number"
             android:singleLine="true"
@@ -31,8 +31,8 @@
 
     <EditTextPreference
             android:key="turns"
-            android:title="@string/editTurns"
-            android:defaultValue="@string/valueTurns"
+            android:title="@string/setting_turn_limit"
+            android:defaultValue="@string/turn_limit"
             android:selectAllOnFocus="true"
             android:inputType="number"
             android:singleLine="true"

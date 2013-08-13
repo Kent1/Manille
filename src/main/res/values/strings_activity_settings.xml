@@ -6,18 +6,18 @@
     <!-- Example Team settings -->
     <string name="pref_header_team">Équipe</string>
 
-    <string name="editTeam1">Nom de la première équipe</string>
-    <string name="valueTeam1">Nous</string>
+    <string name="setting_team_1">Nom de la première équipe</string>
+    <string name="name_team_1">Nous</string>
 
-    <string name="editTeam2">Nom de la deuxième équipe</string>
-    <string name="valueTeam2">Eux</string>
+    <string name="setting_team_2">Nom de la deuxième équipe</string>
+    <string name="name_team_2">Eux</string>
 
     <!-- Example settings for Manille game -->
     <string name="pref_header_game">Jeu</string>
 
-    <string name="editScore">Score pour terminer la partie</string>
-    <string name="valueScore">101</string>
+    <string name="setting_score_limit">Score pour terminer la partie</string>
+    <string name="score_limit">101</string>
 
-    <string name="editTurns">Nombre de plis dans une partie</string>
-    <string name="valueTurns">12</string>
+    <string name="setting_turn_limit">Nombre de plis dans une partie</string>
+    <string name="turn_limit">12</string>
 </resources>

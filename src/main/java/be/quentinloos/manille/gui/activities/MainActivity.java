@@ -45,8 +45,8 @@ public class MainActivity extends Activity implements ManilleDialog.NoticeDialog
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         TextView team1 = (TextView) findViewById(R.id.team1);
         TextView team2 = (TextView) findViewById(R.id.team2);
-        team1.setText(preferences.getString("team1", getString(R.string.valueTeam1)));
-        team2.setText(preferences.getString("team2", getString(R.string.valueTeam2)));
+        team1.setText(preferences.getString("team1", getString(R.string.name_team_1)));
+        team2.setText(preferences.getString("team2", getString(R.string.name_team_2)));
 
         manille = new ManilleFree();
 
@@ -93,8 +93,8 @@ public class MainActivity extends Activity implements ManilleDialog.NoticeDialog
             case RESULT_SETTINGS:
                 TextView team1 = (TextView) findViewById(R.id.team1);
                 TextView team2 = (TextView) findViewById(R.id.team2);
-                team1.setText(preferences.getString("team1", getString(R.string.valueTeam1)));
-                team2.setText(preferences.getString("team2", getString(R.string.valueTeam2)));
+                team1.setText(preferences.getString("team1", getString(R.string.name_team_1)));
+                team2.setText(preferences.getString("team2", getString(R.string.name_team_2)));
                 break;
         }
     }
@@ -115,7 +115,7 @@ public class MainActivity extends Activity implements ManilleDialog.NoticeDialog
 
     @Override
     public void onDialogManilleScoreClick(DialogFragment dialog) {
-        manille = new ManilleScore(Integer.parseInt(preferences.getString("score", getString(R.string.valueScore))));
+        manille = new ManilleScore(Integer.parseInt(preferences.getString("score", getString(R.string.score_limit))));
         adapter = new ScoreAdapter(this, manille.getTurns());
         lv.setAdapter(adapter);
         refresh();
@@ -123,7 +123,7 @@ public class MainActivity extends Activity implements ManilleDialog.NoticeDialog
 
     @Override
     public void onDialogManilleTurnsClick(DialogFragment dialog) {
-        manille = new ManilleTurns(Integer.parseInt(preferences.getString("turns", getString(R.string.valueTurns))));
+        manille = new ManilleTurns(Integer.parseInt(preferences.getString("turns", getString(R.string.turn_limit))));
         adapter = new ScoreAdapter(this, manille.getTurns());
         lv.setAdapter(adapter);
         refresh();
