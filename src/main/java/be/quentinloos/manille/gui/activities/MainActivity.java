@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.Activity;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -103,8 +102,8 @@ public class MainActivity extends Activity implements ManilleDialog.NoticeDialog
 
     private void refresh() {
         adapter.notifyDataSetChanged();
-        sum1.setText(Integer.toString(manille.getScores()[0]));
-        sum2.setText(Integer.toString(manille.getScores()[1]));
+        sum1.setText(Integer.toString(manille.getScore()[0]));
+        sum2.setText(Integer.toString(manille.getScore()[1]));
     }
 
     @Override
@@ -120,7 +119,6 @@ public class MainActivity extends Activity implements ManilleDialog.NoticeDialog
         manille = new ManilleScore(Integer.parseInt(preferences.getString("score", getString(R.string.valueScore))));
         adapter = new ScoreAdapter(this, manille.getTurns());
         lv.setAdapter(adapter);
-
         refresh();
     }
 

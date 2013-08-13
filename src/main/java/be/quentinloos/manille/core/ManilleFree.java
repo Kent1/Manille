@@ -12,7 +12,7 @@ public class ManilleFree extends Manille {
     }
 
     @Override
-    public boolean hasNext() {
-        return true;
+    public boolean isEnded() {
+        return false;
     }
 }

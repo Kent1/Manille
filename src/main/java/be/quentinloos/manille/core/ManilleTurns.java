@@ -16,7 +16,7 @@ public class ManilleTurns extends Manille {
     }
 
     @Override
-    public boolean hasNext() {
-        return this.getNbrTurns() < nbrTurnsLimit;
+    public boolean isEnded() {
+        return this.getNbrTurns() >= nbrTurnsLimit;
     }
 }

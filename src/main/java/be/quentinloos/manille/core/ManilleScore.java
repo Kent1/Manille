@@ -16,7 +16,7 @@ public class ManilleScore extends Manille {
     }
 
     @Override
-    public boolean hasNext() {
-        return getScores()[0] < scoreLimit && getScores()[1] < scoreLimit;
+    public boolean isEnded() {
+        return getScore()[0] >= scoreLimit || getScore()[1] >= scoreLimit;
     }
 }

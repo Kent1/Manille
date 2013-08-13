@@ -10,24 +10,21 @@ import java.util.List;
  */
 public abstract class Manille {
 
-    /** Team's score */
-    private int[] scores;
+    /** Current score of the game */
+    private int[] score;
     /** List of scores of the differents turns */
     private List<int[]> turns;
-    /** The number of turns played */
-    private int nbrTurns;
     /** Multiplying factor for the current turn */
     private int mult;
 
     public Manille() {
-        scores = new int[] { 0, 0 };
+        score = new int[] { 0, 0 };
         turns = new ArrayList<int[]>();
-        nbrTurns = 0;
         mult = 1;
     }
 
-    public int[] getScores() {
-        return scores;
+    public int[] getScore() {
+        return score;
     }
 
     public List<int[]> getTurns() {
@@ -35,19 +32,21 @@ public abstract class Manille {
     }
 
     public int getNbrTurns() {
-        return nbrTurns;
+        return turns.size();
     }
 
     /**
      * End of a turn. Computes the score of the teams and increments the number of turns.
      *
-     * @param score1 Team1's score
-     * @param score2 Team2's score
+     * @param points1 Team1's points
+     * @param points2 Team2's points
+     * @param double1 True if team1 have decided to double
+     * @param double2 True if team2 have decided to double
      */
-    public void endTurns(int score1, int score2, boolean double1, boolean double2) {
-        if (score1 < 0 || score1 > 60
-                || score2 < 0 || score2 > 60
-                || score1 + score2 != 60)
+    public void endTurns(int points1, int points2, boolean double1, boolean double2) {
+        if (points1 < 0 || points1 > 60
+                || points2 < 0 || points2 > 60
+                || points1 + points2 != 60)
             throw new IllegalArgumentException("Bad number of points");
 
         if(double1)
@@ -55,24 +54,22 @@ public abstract class Manille {
         if(double2)
             mult += 1;
 
-        if (score1 == score2) {
+        if (points1 == points2) {
             mult +=1;
             turns.add(new int[] { 0, 0 });
         }
         else {
-            boolean winner = score1 > score2;
-            int points = Math.abs((winner ? score1 : score2) - 30) * mult;
-            this.scores[winner ? 0 : 1] += points;
+            boolean winner = points1 > points2;
+            int points = Math.abs((winner ? points1 : points2) - 30) * mult;
+            this.score[winner ? 0 : 1] += points;
             turns.add(new int[] { (winner ? points : 0), (winner ? 0 : points) });
             mult = 1;
         }
-
-        this.nbrTurns++;
     }
 
     /**
      * Is the end of game ?
      * @return true if the game is ended
      */
-    public abstract boolean hasNext();
+    public abstract boolean isEnded();
 }
