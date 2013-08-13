@@ -3,6 +3,8 @@
 
     <string name="app_name">Manille</string>
     <string name="title_activity_main">Manille</string>
+
+    <!-- Menu -->
     <string name="action_settings">Settings</string>
 
     <string name="action_new">Nouvelle partie</string>
@@ -16,5 +18,12 @@
         <item>Manille à %1$d points</item>
         <item>Manille à %1$d donnes</item>
     </string-array>
+
+    <!--Activity_main -->
+    <string name="title">Manille libre - 11 donnes actuellement</string>
+    <string name="points_team_1">35</string>
+    <string name="team1">Nous</string>
+    <string name="team2">Eux</string>
+    <string name="points_team_2">24</string>
 
 </resources>
