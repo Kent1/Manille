@@ -135,7 +135,7 @@ public class MainActivity extends Activity implements ManilleDialog.NoticeDialog
         try {
             manille.endTurns(score1, score2, double1, double2);
         } catch (IllegalArgumentException e) {
-            Toast.makeText(this, getString(R.string.exception_score), 3).show();
+            Toast.makeText(this, getString(R.string.exception_score), Toast.LENGTH_SHORT).show();
         }
         refresh();
     }

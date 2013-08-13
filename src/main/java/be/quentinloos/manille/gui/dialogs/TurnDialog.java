@@ -40,7 +40,7 @@ public class TurnDialog extends DialogFragment {
                     score2 = Integer.parseInt(((EditText) view.findViewById(R.id.turn_score2)).getText().toString());
                 } catch (NumberFormatException e) {
                     TurnDialog.this.getDialog().cancel();
-                    Toast.makeText(view.getContext(), getString(R.string.exception_score), 3).show();
+                    Toast.makeText(view.getContext(), getString(R.string.exception_score), Toast.LENGTH_SHORT).show();
                 }
                 boolean double1 = ((CheckBox) view.findViewById(R.id.turn_double1)).isChecked();
                 boolean double2 = ((CheckBox) view.findViewById(R.id.turn_double2)).isChecked();
