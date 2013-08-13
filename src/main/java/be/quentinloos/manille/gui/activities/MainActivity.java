@@ -1,6 +1,7 @@
 package be.quentinloos.manille.gui.activities;
 
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
@@ -63,6 +64,7 @@ public class MainActivity extends Activity implements ManilleDialog.NoticeDialog
                 manilleDialog.show(getFragmentManager(), "Manille");
                 return true;
             case R.id.action_settings:
+                this.startActivity(new Intent(this, SettingsActivity.class));
                 return true;
         }
         return super.onMenuItemSelected(featureId, item);
