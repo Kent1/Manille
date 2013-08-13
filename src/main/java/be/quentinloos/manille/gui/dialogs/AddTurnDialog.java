@@ -4,17 +4,14 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import be.quentinloos.manille.R;
@@ -24,7 +21,7 @@ import be.quentinloos.manille.R;
  *
  * @author Quentin Loos <contact@quentinloos.be>
  */
-public class TurnDialog extends DialogFragment {
+public class AddTurnDialog extends DialogFragment {
 
     EditText pointsTeam1, pointsTeam2;
 
@@ -53,12 +50,12 @@ public class TurnDialog extends DialogFragment {
                     score1 = Integer.parseInt(((EditText) view.findViewById(R.id.turn_score1)).getText().toString());
                     score2 = Integer.parseInt(((EditText) view.findViewById(R.id.turn_score2)).getText().toString());
                 } catch (NumberFormatException e) {
-                    TurnDialog.this.getDialog().cancel();
+                    AddTurnDialog.this.getDialog().cancel();
                     Toast.makeText(view.getContext(), getString(R.string.exception_score), Toast.LENGTH_SHORT).show();
                 }
                 boolean double1 = ((CheckBox) view.findViewById(R.id.turn_double1)).isChecked();
                 boolean double2 = ((CheckBox) view.findViewById(R.id.turn_double2)).isChecked();
-                mListener.onDialogPositiveClick(TurnDialog.this, score1, score2, double1, double2);
+                mListener.onDialogPositiveClick(AddTurnDialog.this, score1, score2, double1, double2);
             }
         });
 
@@ -66,7 +63,7 @@ public class TurnDialog extends DialogFragment {
         builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-                TurnDialog.this.getDialog().cancel();
+                AddTurnDialog.this.getDialog().cancel();
             }
         });
 
