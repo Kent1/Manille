@@ -18,13 +18,8 @@ import be.quentinloos.manille.R;
  */
 public class ScoreAdapter extends ArrayAdapter<int[]> {
 
-    private final List<int[]> turns;
-    private final LayoutInflater inflater;
-
     public ScoreAdapter(Context context, List<int[]> objects) {
         super(context, android.R.layout.simple_list_item_1, objects);
-        this.turns = objects;
-        inflater = LayoutInflater.from(context);
     }
 
     @Override
@@ -34,10 +29,10 @@ public class ScoreAdapter extends ArrayAdapter<int[]> {
 
         if (convertView == null) {
             holder = new ViewHolder();
-            convertView = inflater.inflate(R.layout.item_turn, null);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_turn, null);
 
-            holder.scoreteam1 = (TextView)convertView.findViewById(R.id.scoreteam1);
-            holder.scoreteam2 = (TextView)convertView.findViewById(R.id.scoreteam2);
+            holder.points1 = (TextView)convertView.findViewById(R.id.scoreteam1);
+            holder.points2 = (TextView)convertView.findViewById(R.id.scoreteam2);
 
             convertView.setTag(holder);
         }
@@ -45,14 +40,14 @@ public class ScoreAdapter extends ArrayAdapter<int[]> {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.scoreteam1.setText(Integer.toString(turns.get(position)[0]));
-        holder.scoreteam2.setText(Integer.toString(turns.get(position)[1]));
+        holder.points1.setText(Integer.toString(getItem(position)[0]));
+        holder.points2.setText(Integer.toString(getItem(position)[1]));
 
         return convertView;
     }
 
     private class ViewHolder {
-        TextView scoreteam1;
-        TextView scoreteam2;
+        TextView points1;
+        TextView points2;
     }
 }
