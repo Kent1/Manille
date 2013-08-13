@@ -45,17 +45,20 @@ public abstract class Manille {
      * @param score2 Team2's score
      */
     public void endTurns(int score1, int score2) {
-        assert score1 >= 0 && score1 <= 60;
-        assert score2 >= 0 && score2 <= 60;
-        assert score1 + score2 == 60;
+        if (score1 < 0 || score1 > 60
+                || score2 < 0 || score2 > 60
+                || score1 + score2 != 60)
+            throw new IllegalArgumentException("Bad number of points");
 
-        if(score1 == score2)
+        if (score1 == score2) {
             mult +=1;
+            turns.add(new int[] { 0, 0 });
+        }
         else {
             boolean winner = score1 > score2;
-            int points = Math.abs(score1 - score2) * mult;
+            int points = Math.abs((winner ? score1 : score2) - 30) * mult;
             this.scores[winner ? 0 : 1] += points;
-            turns.add(new int[] { (winner ? points : 0), (winner ? points : 0) });
+            turns.add(new int[] { (winner ? points : 0), (winner ? 0 : points) });
             mult = 1;
         }
 
