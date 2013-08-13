@@ -1,5 +1,6 @@
 package be.quentinloos.manille.gui.activities;
 
+import android.app.DialogFragment;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import be.quentinloos.manille.R;
 import be.quentinloos.manille.core.Manille;
 import be.quentinloos.manille.core.ManilleFree;
+import be.quentinloos.manille.gui.dialogs.ManilleDialog;
 import be.quentinloos.manille.util.ScoreAdapter;
 
 /**
@@ -17,9 +19,10 @@ import be.quentinloos.manille.util.ScoreAdapter;
  *
  * @author Quentin Loos <contact@quentinloos.be>
  */
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements ManilleDialog.NoticeDialogListener{
 
     Manille manille;
+    ScoreAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +43,8 @@ public class MainActivity extends Activity {
         sum2.setText(Integer.toString(manille.getScores()[1]));
 
         ListView lv = (ListView) findViewById(R.id.listView);
-        ScoreAdapter sa = new ScoreAdapter(this, manille.getTurns());
-        lv.setAdapter(sa);
+        adapter = new ScoreAdapter(this, manille.getTurns());
+        lv.setAdapter(adapter);
     }
 
 
@@ -56,7 +59,8 @@ public class MainActivity extends Activity {
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_new:
-
+                DialogFragment manilleDialog = new ManilleDialog();
+                manilleDialog.show(getFragmentManager(), "Manille");
                 return true;
             case R.id.action_settings:
                 return true;
@@ -64,4 +68,24 @@ public class MainActivity extends Activity {
         return super.onMenuItemSelected(featureId, item);
     }
 
+    @Override
+    public void onDialogManilleFreeClick(DialogFragment dialog) {
+        manille = new ManilleFree();
+        adapter.clear();
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onDialogManilleScoreClick(DialogFragment dialog) {
+        manille = new ManilleFree();
+        adapter.clear();
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onDialogManilleTurnsClick(DialogFragment dialog) {
+        manille = new ManilleFree();
+        adapter.clear();
+        adapter.notifyDataSetChanged();
+    }
 }
