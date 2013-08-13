@@ -49,12 +49,13 @@ public abstract class Manille {
         assert score2 >= 0 && score2 <= 60;
         assert score1 + score2 == 60;
 
-        turns.add(new int[] { score1, score2 });
-
         if(score1 == score2)
             mult +=1;
         else {
-            this.scores[score1 > score2 ? 0 : 1] += Math.abs(score1 - score2) * mult;
+            boolean winner = score1 > score2;
+            int points = Math.abs(score1 - score2) * mult;
+            this.scores[winner ? 0 : 1] += points;
+            turns.add(new int[] { (winner ? points : 0), (winner ? points : 0) });
             mult = 1;
         }
 
