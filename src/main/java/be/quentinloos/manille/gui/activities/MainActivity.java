@@ -17,6 +17,7 @@ import be.quentinloos.manille.core.ManilleFree;
 import be.quentinloos.manille.core.ManilleScore;
 import be.quentinloos.manille.core.ManilleTurns;
 import be.quentinloos.manille.gui.dialogs.ManilleDialog;
+import be.quentinloos.manille.gui.dialogs.TurnDialog;
 import be.quentinloos.manille.util.ScoreAdapter;
 
 /**
@@ -74,9 +75,13 @@ public class MainActivity extends Activity implements ManilleDialog.NoticeDialog
     @Override
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.action_add:
+                DialogFragment turnDialog = new TurnDialog();
+                turnDialog.show(getFragmentManager(), "turn");
+                return true;
             case R.id.action_new:
                 DialogFragment manilleDialog = new ManilleDialog();
-                manilleDialog.show(getFragmentManager(), "Manille");
+                manilleDialog.show(getFragmentManager(), "type");
                 return true;
             case R.id.action_settings:
                 this.startActivityForResult(new Intent(this, SettingsActivity.class), RESULT_SETTINGS);

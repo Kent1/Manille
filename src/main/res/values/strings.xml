@@ -7,6 +7,9 @@
 
     <string name="action_new">Nouvelle partie</string>
     <string name="pick_a_type">Choisissez un type</string>
+    <string name="action_add">Ajouter une donne</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Annuler</string>
     <string-array name="manille_array">
         <item>Manille Libre</item>
         <item>Manille à %1$d points</item>
