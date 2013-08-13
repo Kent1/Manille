@@ -3,105 +3,93 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:padding="@dimen/margin"
               tools:context=".MainActivity"
-              android:background="#23910d"
-              android:baselineAligned="false">
+              android:baselineAligned="false"
+              android:background="#ffececec">
 
     <LinearLayout
+            android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:focusable="false"
-            android:baselineAligned="false"
-            android:background="#23910d"
+            android:background="@color/green"
             >
 
-        <FrameLayout
+        <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:text="Manille libre - 11 donnes actuellement"
+                android:id="@+id/title"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:layout_margin="@dimen/margin_little"
+                android:textColor="@color/text_on_green"/>
 
-            <EditText
+        <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/background_light"/>
+
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+            <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
+                    android:text="35"
+                    android:id="@+id/points_team_1"
+                    android:layout_gravity="center_vertical|left"
+                    android:layout_weight="1"
+                    android:textSize="24sp"
+                    android:textColor="@color/text_on_green"
+                    android:layout_margin="@dimen/margin"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nous"
                     android:id="@+id/team1"
-                    android:layout_gravity="center_horizontal|top"
-                    android:text="@string/valueTeam1"
-                    android:textStyle="bold"
-                    android:textColor="@color/textwhite"
-                    android:focusable="false"/>
+                    android:textSize="24sp"
+                    android:gravity="center"
+                    android:layout_margin="@dimen/margin"
+                    android:textColor="@color/text_on_green"
+                    android:layout_gravity="center"/>
 
-        </FrameLayout>
+            <View
+                    android:layout_height="fill_parent"
+                    android:layout_width="1dp"
+                    android:background="@android:color/background_light"/>
 
-        <FrameLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-            <EditText
+            <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
+                    android:text="Eux"
                     android:id="@+id/team2"
-                    android:layout_gravity="center_horizontal|top"
-                    android:text="@string/valueTeam2"
-                    android:textColor="@color/textwhite"
-                    android:textStyle="bold"
-                    android:focusable="false"/>
-        </FrameLayout>
+                    android:textSize="24sp"
+                    android:gravity="center"
+                    android:layout_margin="@dimen/margin"
+                    android:textColor="@color/text_on_green"
+                    android:layout_gravity="center"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="24"
+                    android:id="@+id/points_team_2"
+                    android:layout_gravity="center_vertical|right"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:textSize="24sp"
+                    android:textColor="@color/text_on_green"
+                    android:layout_margin="@dimen/margin"/>
+        </LinearLayout>
 
     </LinearLayout>
 
     <ListView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/listView"
-            android:background="#1b710a"
-            tools:listitem="@android:layout/simple_list_item_2"/>
-
-    <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:gravity="bottom"
-            android:baselineAligned="false"
-            android:background="#1b710a">
-
-        <FrameLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#23910d">
-
-            <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:id="@+id/sum1"
-                    android:gravity="center|right"
-                    android:textStyle="bold"
-                    android:textSize="24sp"
-                    android:padding="@dimen/margin"
-                    android:textColor="@color/textwhite"/>
-        </FrameLayout>
-
-        <FrameLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#23910d">
-
-            <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:id="@+id/sum2"
-                    android:gravity="center|left"
-                    android:textStyle="bold"
-                    android:textSize="24sp"
-                    android:padding="@dimen/margin"
-                    android:textColor="@color/textwhite"/>
-        </FrameLayout>
-    </LinearLayout>
+            android:layout_height="fill_parent"
+            android:id="@+id/listView"
+            tools:listitem="@layout/item_turn"/>
 
 </LinearLayout>

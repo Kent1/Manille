@@ -26,15 +26,15 @@ import be.quentinloos.manille.util.ScoreAdapter;
  *
  * @author Quentin Loos <contact@quentinloos.be>
  */
-public class MainActivity extends Activity implements ManilleDialog.NoticeDialogListener, TurnDialog.NoticeDialogListener{
+public class MainActivity extends Activity implements ManilleDialog.NoticeDialogListener, TurnDialog.NoticeDialogListener {
 
     private static final int RESULT_SETTINGS = 1;
 
     private Manille manille;
     private ScoreAdapter adapter;
     private SharedPreferences preferences;
-    private TextView sum1;
-    private TextView sum2;
+    private TextView pointsTeam1;
+    private TextView pointsTeam2;
     private ListView lv;
 
     @Override
@@ -50,8 +50,8 @@ public class MainActivity extends Activity implements ManilleDialog.NoticeDialog
 
         manille = new ManilleFree();
 
-        sum1 = (TextView) findViewById(R.id.sum1);
-        sum2 = (TextView) findViewById(R.id.sum2);
+        pointsTeam1 = (TextView) findViewById(R.id.points_team_1);
+        pointsTeam2 = (TextView) findViewById(R.id.points_team_2);
 
         lv = (ListView) findViewById(R.id.listView);
         adapter = new ScoreAdapter(this, manille.getTurns());
@@ -63,7 +63,6 @@ public class MainActivity extends Activity implements ManilleDialog.NoticeDialog
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
@@ -102,8 +101,8 @@ public class MainActivity extends Activity implements ManilleDialog.NoticeDialog
 
     private void refresh() {
         adapter.notifyDataSetChanged();
-        sum1.setText(Integer.toString(manille.getScore()[0]));
-        sum2.setText(Integer.toString(manille.getScore()[1]));
+        pointsTeam1.setText(Integer.toString(manille.getScore()[0]));
+        pointsTeam2.setText(Integer.toString(manille.getScore()[1]));
     }
 
     @Override

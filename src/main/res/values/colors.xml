@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="textwhite">#ececec</color>
+    <color name="text_on_green">#ececec</color>
+    <color name="green">#23910d</color>
 </resources>
