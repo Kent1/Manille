@@ -30,8 +30,7 @@
                     android:inputType="textPersonName"
                     android:id="@+id/team1"
                     android:layout_gravity="center_horizontal|top"
-                    android:text="Nous"
-                    android:layout_weight="1"
+                    android:text="@string/valueTeam1"
                     android:textStyle="bold"
                     android:textColor="@color/textwhite"
                     android:focusable="false"/>
@@ -49,8 +48,7 @@
                     android:inputType="textPersonName"
                     android:id="@+id/team2"
                     android:layout_gravity="center_horizontal|top"
-                    android:text="Eux"
-                    android:layout_weight="1"
+                    android:text="@string/valueTeam2"
                     android:textColor="@color/textwhite"
                     android:textStyle="bold"
                     android:focusable="false"/>
@@ -81,7 +79,7 @@
             <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="Somme 1"
+                    android:text=""
                     android:id="@+id/sum1"
                     android:gravity="center|right"
                     android:textStyle="bold"
@@ -102,7 +100,7 @@
             <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="Somme 2"
+                    android:text=""
                     android:id="@+id/sum2"
                     android:gravity="center|left"
                     android:textStyle="bold"

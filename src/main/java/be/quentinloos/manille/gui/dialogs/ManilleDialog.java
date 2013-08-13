@@ -1,13 +1,13 @@
 package be.quentinloos.manille.gui.dialogs;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
-import android.os.Build;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.widget.Toast;
 
 import be.quentinloos.manille.R;
@@ -17,7 +17,6 @@ import be.quentinloos.manille.R;
  *
  * @author Quentin Loos <contact@quentinloos.be>
  */
-@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class ManilleDialog extends DialogFragment {
 
     @Override
@@ -25,13 +24,17 @@ public class ManilleDialog extends DialogFragment {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(R.string.pick_a_type);
-        builder.setItems(R.array.manille_array, new DialogInterface.OnClickListener() {
+        String[] array = getResources().getStringArray(R.array.manille_array);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        array[1] = String.format(array[1], Integer.parseInt(preferences.getString("score", getString(R.string.valueScore))));
+        array[2] = String.format(array[2], Integer.parseInt(preferences.getString("turns", getString(R.string.valueTurns))));
+        builder.setItems(array, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 // The 'which' argument contains the index position
                 // of the selected item
-                // 1. ManilleFree
-                // 2. ManilleScore
-                // 3. ManilleTurns
+                // 0. ManilleFree
+                // 1. ManilleScore
+                // 2. ManilleTurns
                 switch (which) {
                     case 0:
                         mListener.onDialogManilleFreeClick(ManilleDialog.this);

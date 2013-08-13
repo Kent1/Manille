@@ -2,8 +2,10 @@ package be.quentinloos.manille.gui.activities;
 
 import android.app.DialogFragment;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.Activity;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -22,18 +24,26 @@ import be.quentinloos.manille.util.ScoreAdapter;
  */
 public class MainActivity extends Activity implements ManilleDialog.NoticeDialogListener{
 
-    Manille manille;
-    ScoreAdapter adapter;
+    private static final int RESULT_SETTINGS = 1;
+
+    private Manille manille;
+    private ScoreAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        TextView team1 = (TextView) findViewById(R.id.team1);
+        TextView team2 = (TextView) findViewById(R.id.team2);
+        team1.setText(preferences.getString("team1", getString(R.string.valueTeam1)));
+        team2.setText(preferences.getString("team2", getString(R.string.valueTeam2)));
+
         manille = new ManilleFree();
         manille.endTurns(25, 35);
         manille.endTurns(25, 35);
-        manille.endTurns(25, 35);
+        manille.endTurns(30, 30);
         manille.endTurns(25, 35);
         manille.endTurns(25, 35);
         manille.endTurns(25, 35);
@@ -64,10 +74,25 @@ public class MainActivity extends Activity implements ManilleDialog.NoticeDialog
                 manilleDialog.show(getFragmentManager(), "Manille");
                 return true;
             case R.id.action_settings:
-                this.startActivity(new Intent(this, SettingsActivity.class));
+                this.startActivityForResult(new Intent(this, SettingsActivity.class), RESULT_SETTINGS);
                 return true;
         }
         return super.onMenuItemSelected(featureId, item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            case RESULT_SETTINGS:
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+                TextView team1 = (TextView) findViewById(R.id.team1);
+                TextView team2 = (TextView) findViewById(R.id.team2);
+                team1.setText(preferences.getString("team1", getString(R.string.valueTeam1)));
+                team2.setText(preferences.getString("team2", getString(R.string.valueTeam2)));
+                break;
+        }
     }
 
     @Override

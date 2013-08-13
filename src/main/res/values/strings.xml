@@ -4,13 +4,13 @@
     <string name="app_name">Manille</string>
     <string name="title_activity_main">Manille</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+
     <string name="action_new">Nouvelle partie</string>
     <string name="pick_a_type">Choisissez un type</string>
     <string-array name="manille_array">
         <item>Manille Libre</item>
-        <item>Manille à X points</item>
-        <item>Manille à X tours</item>
+        <item>Manille à %1$d points</item>
+        <item>Manille à %1$d donnes</item>
     </string-array>
 
 </resources>
