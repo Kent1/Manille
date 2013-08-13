@@ -1,4 +1,4 @@
-package be.quentinloos.manille.activities;
+package be.quentinloos.manille.gui.activities;
 
 import android.os.Bundle;
 import android.app.Activity;
