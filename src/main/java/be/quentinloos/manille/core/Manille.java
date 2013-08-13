@@ -44,11 +44,16 @@ public abstract class Manille {
      * @param score1 Team1's score
      * @param score2 Team2's score
      */
-    public void endTurns(int score1, int score2) {
+    public void endTurns(int score1, int score2, boolean double1, boolean double2) {
         if (score1 < 0 || score1 > 60
                 || score2 < 0 || score2 > 60
                 || score1 + score2 != 60)
             throw new IllegalArgumentException("Bad number of points");
+
+        if(double1)
+            mult += 1;
+        if(double2)
+            mult += 1;
 
         if (score1 == score2) {
             mult +=1;

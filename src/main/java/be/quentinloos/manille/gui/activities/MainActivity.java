@@ -6,10 +6,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.Activity;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import be.quentinloos.manille.R;
 import be.quentinloos.manille.core.Manille;
@@ -25,7 +27,7 @@ import be.quentinloos.manille.util.ScoreAdapter;
  *
  * @author Quentin Loos <contact@quentinloos.be>
  */
-public class MainActivity extends Activity implements ManilleDialog.NoticeDialogListener{
+public class MainActivity extends Activity implements ManilleDialog.NoticeDialogListener, TurnDialog.NoticeDialogListener{
 
     private static final int RESULT_SETTINGS = 1;
 
@@ -34,6 +36,7 @@ public class MainActivity extends Activity implements ManilleDialog.NoticeDialog
     private SharedPreferences preferences;
     private TextView sum1;
     private TextView sum2;
+    private ListView lv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,17 +50,11 @@ public class MainActivity extends Activity implements ManilleDialog.NoticeDialog
         team2.setText(preferences.getString("team2", getString(R.string.valueTeam2)));
 
         manille = new ManilleFree();
-        manille.endTurns(25, 35);
-        manille.endTurns(25, 35);
-        manille.endTurns(30, 30);
-        manille.endTurns(25, 35);
-        manille.endTurns(25, 35);
-        manille.endTurns(25, 35);
 
         sum1 = (TextView) findViewById(R.id.sum1);
         sum2 = (TextView) findViewById(R.id.sum2);
 
-        ListView lv = (ListView) findViewById(R.id.listView);
+        lv = (ListView) findViewById(R.id.listView);
         adapter = new ScoreAdapter(this, manille.getTurns());
         lv.setAdapter(adapter);
 
@@ -104,30 +101,44 @@ public class MainActivity extends Activity implements ManilleDialog.NoticeDialog
         }
     }
 
+    private void refresh() {
+        adapter.notifyDataSetChanged();
+        sum1.setText(Integer.toString(manille.getScores()[0]));
+        sum2.setText(Integer.toString(manille.getScores()[1]));
+    }
+
     @Override
     public void onDialogManilleFreeClick(DialogFragment dialog) {
         manille = new ManilleFree();
-        adapter.clear();
+        adapter = new ScoreAdapter(this, manille.getTurns());
+        lv.setAdapter(adapter);
         refresh();
     }
 
     @Override
     public void onDialogManilleScoreClick(DialogFragment dialog) {
         manille = new ManilleScore(Integer.parseInt(preferences.getString("score", getString(R.string.valueScore))));
-        adapter.clear();
+        adapter = new ScoreAdapter(this, manille.getTurns());
+        lv.setAdapter(adapter);
+
         refresh();
     }
 
     @Override
     public void onDialogManilleTurnsClick(DialogFragment dialog) {
         manille = new ManilleTurns(Integer.parseInt(preferences.getString("turns", getString(R.string.valueTurns))));
-        adapter.clear();
+        adapter = new ScoreAdapter(this, manille.getTurns());
+        lv.setAdapter(adapter);
         refresh();
     }
 
-    private void refresh() {
-        adapter.notifyDataSetChanged();
-        sum1.setText(Integer.toString(manille.getScores()[0]));
-        sum2.setText(Integer.toString(manille.getScores()[1]));
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog, int score1, int score2, boolean double1, boolean double2) {
+        try {
+            manille.endTurns(score1, score2, double1, double2);
+        } catch (IllegalArgumentException e) {
+            Toast.makeText(this, getString(R.string.exception_score), 3).show();
+        }
+        refresh();
     }
 }
