@@ -3,9 +3,9 @@ package be.quentinloos.manille.gui.dialogs;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -25,13 +25,20 @@ public class AddTurnDialog extends DialogFragment {
 
     EditText pointsTeam1, pointsTeam2;
 
+    public static AddTurnDialog newInstance(int title) {
+        AddTurnDialog dialog = new AddTurnDialog();
+        Bundle args = new Bundle();
+        args.putInt("title", title);
+        dialog.setArguments(args);
+        return dialog;
+    }
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this.getActivity());
+        int title = getArguments().getInt("title");
+
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        builder.setTitle(R.string.action_add);
         final View view = inflater.inflate(R.layout.dialog_add_turn, null);
-        builder.setView(view);
 
         // EditText for points of the turn
         pointsTeam1 = (EditText) view.findViewById(R.id.turn_score1);
@@ -41,33 +48,38 @@ public class AddTurnDialog extends DialogFragment {
         pointsTeam1.addTextChangedListener(getTextWatcher(pointsTeam1, pointsTeam2));
         pointsTeam2.addTextChangedListener(getTextWatcher(pointsTeam2, pointsTeam1));
 
-        // Listener for the 'OK' button
-        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int id) {
-                int score1 = 0, score2 = 0;
-                try {
-                    score1 = Integer.parseInt(((EditText) view.findViewById(R.id.turn_score1)).getText().toString());
-                    score2 = Integer.parseInt(((EditText) view.findViewById(R.id.turn_score2)).getText().toString());
-                } catch (NumberFormatException e) {
-                    AddTurnDialog.this.getDialog().cancel();
-                    Toast.makeText(view.getContext(), getString(R.string.exception_score), Toast.LENGTH_SHORT).show();
-                }
-                boolean double1 = ((CheckBox) view.findViewById(R.id.turn_double1)).isChecked();
-                boolean double2 = ((CheckBox) view.findViewById(R.id.turn_double2)).isChecked();
-                mListener.onDialogPositiveClick(AddTurnDialog.this, score1, score2, double1, double2);
-            }
-        });
+        return new AlertDialog.Builder(this.getActivity())
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle(title)
+                .setView(view)
 
-        // Listener for the 'Cancel' button
-        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int id) {
-                AddTurnDialog.this.getDialog().cancel();
-            }
-        });
+                // Listener for the 'OK' button
+                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        int score1 = 0, score2 = 0;
+                        try {
+                            score1 = Integer.parseInt(((EditText) view.findViewById(R.id.turn_score1)).getText().toString());
+                            score2 = Integer.parseInt(((EditText) view.findViewById(R.id.turn_score2)).getText().toString());
+                        } catch (NumberFormatException e) {
+                            AddTurnDialog.this.getDialog().cancel();
+                            Toast.makeText(view.getContext(), getString(R.string.exception_score), Toast.LENGTH_SHORT).show();
+                        }
+                        boolean double1 = ((CheckBox) view.findViewById(R.id.turn_double1)).isChecked();
+                        boolean double2 = ((CheckBox) view.findViewById(R.id.turn_double2)).isChecked();
+                        mListener.onDialogPositiveClick(AddTurnDialog.this, score1, score2, double1, double2);
+                    }
+                })
 
-        return builder.create();
+                // Listener for the 'Cancel' button
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        AddTurnDialog.this.getDialog().cancel();
+                    }
+                })
+
+                .create();
     }
 
     public interface NoticeDialogListener {

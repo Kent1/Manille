@@ -1,11 +1,12 @@
 package be.quentinloos.manille.gui.activities;
 
-import android.app.DialogFragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.Activity;
 import android.preference.PreferenceManager;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -26,7 +27,7 @@ import be.quentinloos.manille.util.ScoreAdapter;
  *
  * @author Quentin Loos <contact@quentinloos.be>
  */
-public class MainActivity extends Activity implements NewManilleDialog.NoticeDialogListener, AddTurnDialog.NoticeDialogListener {
+public class MainActivity extends FragmentActivity implements NewManilleDialog.NoticeDialogListener, AddTurnDialog.NoticeDialogListener {
 
     private static final int RESULT_SETTINGS = 1;
 
@@ -71,12 +72,12 @@ public class MainActivity extends Activity implements NewManilleDialog.NoticeDia
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_add:
-                DialogFragment turnDialog = new AddTurnDialog();
-                turnDialog.show(getFragmentManager(), "turn");
+                DialogFragment turnDialog = AddTurnDialog.newInstance(R.string.action_add);
+                turnDialog.show(getSupportFragmentManager(), "add a turn");
                 return true;
             case R.id.action_new:
-                DialogFragment manilleDialog = new NewManilleDialog();
-                manilleDialog.show(getFragmentManager(), "type");
+                DialogFragment manilleDialog = NewManilleDialog.newInstance(R.string.pick_a_type);
+                manilleDialog.show(getSupportFragmentManager(), "type");
                 return true;
             case R.id.action_settings:
                 this.startActivityForResult(new Intent(this, SettingsActivity.class), RESULT_SETTINGS);
