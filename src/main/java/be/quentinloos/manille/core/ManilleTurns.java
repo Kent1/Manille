@@ -8,15 +8,19 @@ package be.quentinloos.manille.core;
 public class ManilleTurns extends Manille {
 
     /** Number of turns in the game */
-    private int nbrTurnsLimit;
+    private int ending;
 
-    public ManilleTurns(int nbrTurnsLimit) {
+    public ManilleTurns(int ending) {
         super();
-        this.nbrTurnsLimit = nbrTurnsLimit;
+        this.ending = ending;
+    }
+
+    public int getEnding() {
+        return ending;
     }
 
     @Override
     public boolean isEnded() {
-        return this.getNbrTurns() >= nbrTurnsLimit;
+        return this.getNbrTurns() >= ending;
     }
 }

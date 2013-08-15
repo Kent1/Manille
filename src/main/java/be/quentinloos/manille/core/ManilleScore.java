@@ -8,15 +8,19 @@ package be.quentinloos.manille.core;
 public class ManilleScore extends Manille {
 
     /** points to get to finish the game */
-    private int threshold;
+    private int ending;
 
-    public ManilleScore(int threshold) {
+    public ManilleScore(int ending) {
         super();
-        this.threshold = threshold;
+        this.ending = ending;
+    }
+
+    public int getEnding() {
+        return ending;
     }
 
     @Override
     public boolean isEnded() {
-        return getScore()[0] >= threshold || getScore()[1] >= threshold;
+        return getScore()[0] >= ending || getScore()[1] >= ending;
     }
 }
