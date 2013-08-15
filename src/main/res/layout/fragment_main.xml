@@ -1,0 +1,108 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              tools:context=".MainActivity"
+              android:baselineAligned="false"
+              android:background="#ffececec">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/green">
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/title"
+                android:id="@+id/title"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:layout_margin="@dimen/margin_little"
+                android:textColor="@color/text_on_green"/>
+
+        <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/background_light"/>
+
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+            <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:text="@string/points_team_1"
+                        android:id="@+id/points_team_1"
+                        android:layout_gravity="center_vertical|left"
+                        android:textSize="22sp"
+                        android:textColor="@color/text_on_green"
+                        android:layout_margin="@dimen/margin"
+                        android:gravity="center"/>
+
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/name_team_1"
+                        android:id="@+id/team1"
+                        android:textSize="22sp"
+                        android:gravity="center|right"
+                        android:layout_margin="@dimen/margin"
+                        android:textColor="@color/text_on_green"
+                        android:layout_weight="1"/>
+            </LinearLayout>
+
+            <TextView
+                    android:layout_height="fill_parent"
+                    android:layout_width="1dp"
+                    android:background="@android:color/background_light"/>
+
+            <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/name_team_2"
+                        android:id="@+id/team2"
+                        android:textSize="22sp"
+                        android:gravity="center|left"
+                        android:layout_margin="@dimen/margin"
+                        android:textColor="@color/text_on_green"
+                        android:layout_weight="1"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:text="@string/points_team_2"
+                        android:id="@+id/points_team_2"
+                        android:layout_gravity="center_vertical|right"
+                        android:gravity="center|right"
+                        android:textSize="22sp"
+                        android:textColor="@color/text_on_green"
+                        android:layout_margin="@dimen/margin"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ListView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/listView"
+            tools:listitem="@layout/item_turn"/>
+
+</LinearLayout>

@@ -19,7 +19,6 @@ import be.quentinloos.manille.core.ManilleScore;
 import be.quentinloos.manille.core.ManilleTurns;
 import be.quentinloos.manille.gui.dialogs.AddTurnDialog;
 import be.quentinloos.manille.gui.dialogs.NewManilleDialog;
-import be.quentinloos.manille.util.ScoreAdapter;
 
 /**
  * Main Activity
@@ -31,35 +30,15 @@ public class MainActivity extends FragmentActivity implements NewManilleDialog.N
     private static final int RESULT_SETTINGS = 1;
 
     private Manille manille;
-    private ScoreAdapter adapter;
     private SharedPreferences preferences;
-    private TextView pointsTeam1;
-    private TextView pointsTeam2;
-    private ListView lv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        TextView team1 = (TextView) findViewById(R.id.team1);
-        TextView team2 = (TextView) findViewById(R.id.team2);
-        team1.setText(preferences.getString("team1", getString(R.string.name_team_1)));
-        team2.setText(preferences.getString("team2", getString(R.string.name_team_2)));
-
         manille = new ManilleFree();
 
-        pointsTeam1 = (TextView) findViewById(R.id.points_team_1);
-        pointsTeam2 = (TextView) findViewById(R.id.points_team_2);
-
-        lv = (ListView) findViewById(R.id.listView);
-        adapter = new ScoreAdapter(this, manille.getTurns());
-        lv.setAdapter(adapter);
-
-        refresh();
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -91,42 +70,28 @@ public class MainActivity extends FragmentActivity implements NewManilleDialog.N
 
         switch (requestCode) {
             case RESULT_SETTINGS:
-                TextView team1 = (TextView) findViewById(R.id.team1);
-                TextView team2 = (TextView) findViewById(R.id.team2);
-                team1.setText(preferences.getString("team1", getString(R.string.name_team_1)));
-                team2.setText(preferences.getString("team2", getString(R.string.name_team_2)));
+
                 break;
         }
     }
 
-    private void refresh() {
-        adapter.notifyDataSetChanged();
-        pointsTeam1.setText(Integer.toString(manille.getScore()[0]));
-        pointsTeam2.setText(Integer.toString(manille.getScore()[1]));
+    public Manille getManille() {
+        return manille;
     }
 
     @Override
     public void onDialogManilleFreeClick(DialogFragment dialog) {
         manille = new ManilleFree();
-        adapter = new ScoreAdapter(this, manille.getTurns());
-        lv.setAdapter(adapter);
-        refresh();
     }
 
     @Override
     public void onDialogManilleScoreClick(DialogFragment dialog) {
         manille = new ManilleScore(Integer.parseInt(preferences.getString("score", getString(R.string.score_limit))));
-        adapter = new ScoreAdapter(this, manille.getTurns());
-        lv.setAdapter(adapter);
-        refresh();
     }
 
     @Override
     public void onDialogManilleTurnsClick(DialogFragment dialog) {
         manille = new ManilleTurns(Integer.parseInt(preferences.getString("turns", getString(R.string.turn_limit))));
-        adapter = new ScoreAdapter(this, manille.getTurns());
-        lv.setAdapter(adapter);
-        refresh();
     }
 
     @Override
@@ -136,6 +101,5 @@ public class MainActivity extends FragmentActivity implements NewManilleDialog.N
         } catch (IllegalArgumentException e) {
             Toast.makeText(this, getString(R.string.exception_score), Toast.LENGTH_SHORT).show();
         }
-        refresh();
     }
 }
