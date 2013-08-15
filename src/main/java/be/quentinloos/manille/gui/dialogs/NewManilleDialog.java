@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import be.quentinloos.manille.R;
+import be.quentinloos.manille.core.ManilleFree;
+import be.quentinloos.manille.gui.activities.MainActivity;
 
 /**
  * A dialog to choose the type of Manille
@@ -44,48 +46,9 @@ public class NewManilleDialog extends DialogFragment {
                 .setTitle(title)
                 .setItems(array, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        // The 'which' argument contains the index position
-                        // of the selected item
-                        // 0. ManilleFree
-                        // 1. ManilleScore
-                        // 2. ManilleTurns
-                        switch (which) {
-                            case 0:
-                                mListener.onDialogManilleFreeClick(NewManilleDialog.this);
-                                break;
-
-                            case 1:
-                                mListener.onDialogManilleScoreClick(NewManilleDialog.this);
-                                break;
-
-                            case 2:
-                                mListener.onDialogManilleTurnsClick(NewManilleDialog.this);
-                                break;
-                        }
+                        ((MainActivity) getActivity()).newManille(which);
                     }
                 })
                 .create();
     }
-
-    public interface NoticeDialogListener {
-        public void onDialogManilleFreeClick(DialogFragment dialog);
-        public void onDialogManilleScoreClick(DialogFragment dialog);
-        public void onDialogManilleTurnsClick(DialogFragment dialog);
-    }
-
-    NoticeDialogListener mListener;
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        try {
-            // Instantiate the NoticeDialogListener so we can send events to the host
-            mListener = (NoticeDialogListener) activity;
-        } catch (ClassCastException e) {
-            // The activity doesn't implement the interface, throw exception
-            throw new ClassCastException(activity.toString()
-                    + " must implement NoticeDialogListener");
-        }
-    }
-
 }
