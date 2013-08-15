@@ -1,22 +1,22 @@
 package be.quentinloos.manille.core;
 
 /**
- * A X-score Manille card game.
+ * A X-points Manille card game.
  *
  * @author Quentin Loos <contact@quentinloos.be>
  */
 public class ManilleScore extends Manille {
 
-    /** Score to get to finish the game */
-    private int scoreLimit;
+    /** points to get to finish the game */
+    private int threshold;
 
-    public ManilleScore(int scoreLimit) {
+    public ManilleScore(int threshold) {
         super();
-        this.scoreLimit = scoreLimit;
+        this.threshold = threshold;
     }
 
     @Override
     public boolean isEnded() {
-        return getScore()[0] >= scoreLimit || getScore()[1] >= scoreLimit;
+        return getScore()[0] >= threshold || getScore()[1] >= threshold;
     }
 }
