@@ -1,6 +1,5 @@
 package be.quentinloos.manille.gui.dialogs;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -8,11 +7,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
-import android.view.LayoutInflater;
-import android.view.View;
 
 import be.quentinloos.manille.R;
-import be.quentinloos.manille.core.ManilleFree;
 import be.quentinloos.manille.gui.activities.MainActivity;
 
 /**
@@ -33,9 +29,6 @@ public class NewManilleDialog extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         int title = getArguments().getInt("title");
-
-        LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.dialog_add_turn, null);
 
         String[] array = getResources().getStringArray(R.array.manille_array);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());

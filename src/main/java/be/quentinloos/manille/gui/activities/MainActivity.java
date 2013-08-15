@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,8 +13,6 @@ import be.quentinloos.manille.core.Manille;
 import be.quentinloos.manille.core.ManilleFree;
 import be.quentinloos.manille.core.ManilleScore;
 import be.quentinloos.manille.core.ManilleTurns;
-import be.quentinloos.manille.gui.dialogs.AddTurnDialog;
-import be.quentinloos.manille.gui.dialogs.NewManilleDialog;
 import be.quentinloos.manille.gui.fragments.MainFragment;
 
 /**
@@ -36,11 +33,6 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
     }
 
     @Override

@@ -1,13 +1,10 @@
 package be.quentinloos.manille.gui.fragments;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,15 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import be.quentinloos.manille.R;
 import be.quentinloos.manille.core.Manille;
-import be.quentinloos.manille.core.ManilleFree;
-import be.quentinloos.manille.core.ManilleScore;
-import be.quentinloos.manille.core.ManilleTurns;
 import be.quentinloos.manille.gui.activities.MainActivity;
-import be.quentinloos.manille.gui.activities.SettingsActivity;
 import be.quentinloos.manille.gui.dialogs.AddTurnDialog;
 import be.quentinloos.manille.gui.dialogs.NewManilleDialog;
 import be.quentinloos.manille.util.ScoreAdapter;
@@ -71,7 +63,6 @@ public class MainFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
         preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
