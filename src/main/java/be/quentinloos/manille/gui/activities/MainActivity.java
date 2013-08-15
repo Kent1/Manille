@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -19,6 +20,7 @@ import be.quentinloos.manille.core.ManilleScore;
 import be.quentinloos.manille.core.ManilleTurns;
 import be.quentinloos.manille.gui.dialogs.AddTurnDialog;
 import be.quentinloos.manille.gui.dialogs.NewManilleDialog;
+import be.quentinloos.manille.util.ManilleParcelable;
 import be.quentinloos.manille.util.ScoreAdapter;
 
 /**
@@ -48,7 +50,11 @@ public class MainActivity extends FragmentActivity implements NewManilleDialog.N
         team1.setText(preferences.getString("team1", getString(R.string.name_team_1)));
         team2.setText(preferences.getString("team2", getString(R.string.name_team_2)));
 
-        manille = new ManilleFree();
+        if (savedInstanceState != null) {
+            manille = ((ManilleParcelable) savedInstanceState.getParcelable("Manille")).getManille();
+        } else {
+            manille = new ManilleFree();
+        }
 
         pointsTeam1 = (TextView) findViewById(R.id.points_team_1);
         pointsTeam2 = (TextView) findViewById(R.id.points_team_2);
@@ -60,6 +66,11 @@ public class MainActivity extends FragmentActivity implements NewManilleDialog.N
         refresh();
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putParcelable("Manille", new ManilleParcelable(manille));
+        super.onSaveInstanceState(outState);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -71,12 +82,10 @@ public class MainActivity extends FragmentActivity implements NewManilleDialog.N
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_add:
-                DialogFragment turnDialog = AddTurnDialog.newInstance(R.string.action_add);
-                turnDialog.show(getSupportFragmentManager(), "add a turn");
+                AddTurnDialog.newInstance(R.string.action_add).show(getSupportFragmentManager(), "add a turn");
                 return true;
             case R.id.action_new:
-                DialogFragment manilleDialog = NewManilleDialog.newInstance(R.string.pick_a_type);
-                manilleDialog.show(getSupportFragmentManager(), "type");
+                NewManilleDialog.newInstance(R.string.pick_a_type).show(getSupportFragmentManager(), "choose a game");
                 return true;
             case R.id.action_settings:
                 this.startActivityForResult(new Intent(this, SettingsActivity.class), RESULT_SETTINGS);

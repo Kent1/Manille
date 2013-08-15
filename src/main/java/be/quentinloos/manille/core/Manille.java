@@ -13,7 +13,7 @@ public abstract class Manille {
     /** Current score of the game */
     private int[] score;
     /** List of scores of the differents turns */
-    private List<int[]> turns;
+    private ArrayList<int[]> turns;
     /** Multiplying factor for the current turn */
     private int mult;
 
@@ -27,12 +27,28 @@ public abstract class Manille {
         return score;
     }
 
-    public List<int[]> getTurns() {
+    public void setScore(int[] score) {
+        this.score = score;
+    }
+
+    public ArrayList<int[]> getTurns() {
         return turns;
+    }
+
+    public void setTurns(ArrayList<int[]> turns) {
+        this.turns = turns;
     }
 
     public int getNbrTurns() {
         return turns.size();
+    }
+
+    public int getMult() {
+        return mult;
+    }
+
+    public void setMult(int mult) {
+        this.mult = mult;
     }
 
     /**
