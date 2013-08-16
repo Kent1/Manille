@@ -16,6 +16,8 @@ public abstract class Manille {
     private ArrayList<int[]> turns;
     /** Multiplying factor for the current turn */
     private int mult;
+    /** boolean used to store if trump suit is no-trump */
+    private boolean noTrump;
 
     public Manille() {
         score = new int[] { 0, 0 };
@@ -51,6 +53,14 @@ public abstract class Manille {
         this.mult = mult;
     }
 
+    public boolean isNoTrump() {
+        return noTrump;
+    }
+
+    public void setNoTrump() {
+        this.noTrump = true;
+    }
+
     /**
      * End of a turn. Computes the score of the teams and increments the number of turns.
      *
@@ -58,20 +68,24 @@ public abstract class Manille {
      * @param points2 Team2's points
      * @param double1 True if team1 have decided to double
      * @param double2 True if team2 have decided to double
+     * @param noTrump True if the trump suit is no-trump
      */
-    public void endTurns(int points1, int points2, boolean double1, boolean double2) {
+    public void endTurns(int points1, int points2, boolean double1, boolean double2, boolean noTrump) {
         if (points1 < 0 || points1 > 60
                 || points2 < 0 || points2 > 60
                 || points1 + points2 != 60)
             throw new IllegalArgumentException("Bad number of points");
 
         if(double1)
-            mult += 1;
+            mult++;
         if(double2)
-            mult += 1;
+            mult++;
+
+        if(noTrump)
+            mult++;
 
         if (points1 == points2) {
-            mult +=1;
+            mult++;
             turns.add(new int[] { 0, 0 });
         }
         else {
