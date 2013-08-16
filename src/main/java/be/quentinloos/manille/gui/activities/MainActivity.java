@@ -41,6 +41,10 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setActionBarNavigationList();
+    }
+
+    private void setActionBarNavigationList() {
         String[] array = getResources().getStringArray(R.array.manille_array);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         array[1] = String.format(array[1], Integer.parseInt(preferences.getString("score", getString(R.string.score_limit))));
@@ -89,6 +93,7 @@ public class MainActivity extends ActionBarActivity {
         switch (requestCode) {
             case RESULT_SETTINGS:
                 refreshMainFragment();
+                setActionBarNavigationList();
                 break;
         }
     }
