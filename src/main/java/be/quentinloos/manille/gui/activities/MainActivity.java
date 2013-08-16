@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
@@ -24,7 +25,7 @@ import be.quentinloos.manille.gui.fragments.MainFragment;
  *
  * @author Quentin Loos <contact@quentinloos.be>
  */
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements ActionBar.OnNavigationListener {
 
     private static final int RESULT_SETTINGS = 1;
 
@@ -32,16 +33,16 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        if (savedInstanceState != null) {
+        if (savedInstanceState != null)
             manille = ((ManilleParcelable) savedInstanceState.getParcelable("Manille")).getManille();
-        } else {
+        else
             manille = new ManilleFree();
-        }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setActionBarNavigationList();
+        if (savedInstanceState == null)
+            setActionBarNavigationList();
     }
 
     private void setActionBarNavigationList() {
@@ -55,13 +56,7 @@ public class MainActivity extends ActionBarActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
 
-        actionBar.setListNavigationCallbacks(mSpinnerAdapter, new ActionBar.OnNavigationListener() {
-            @Override
-            public boolean onNavigationItemSelected(int i, long l) {
-                newManille(i);
-                return false;
-            }
-        });
+        actionBar.setListNavigationCallbacks(mSpinnerAdapter, this);
     }
 
     @Override
@@ -93,7 +88,6 @@ public class MainActivity extends ActionBarActivity {
         switch (requestCode) {
             case RESULT_SETTINGS:
                 refreshMainFragment();
-                setActionBarNavigationList();
                 break;
         }
     }
@@ -119,7 +113,10 @@ public class MainActivity extends ActionBarActivity {
                 break;
 
             case 2:
-                manille = new ManilleTurns(Integer.parseInt(preferences.getString("turns", getString(R.string.turn_limit))));
+                manille = new ManilleTurns(
+                        Integer.parseInt(preferences.getString("turns", getString(R.string.turn_limit))),
+                        Integer.parseInt(preferences.getString("no_trump", getString(R.string.no_trump)))
+                );
                 break;
         }
         refreshMainFragment();
@@ -127,5 +124,11 @@ public class MainActivity extends ActionBarActivity {
 
     public void refreshMainFragment() {
         ((MainFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_main)).refresh();
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(int i, long l) {
+        newManille(i);
+        return true;
     }
 }
