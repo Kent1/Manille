@@ -68,9 +68,10 @@ public abstract class Manille {
      * @param points2 Team2's points
      * @param double1 True if team1 have decided to double
      * @param double2 True if team2 have decided to double
-     * @param noTrump True if the trump suit is no-trump
+     * @param noTrump1 True if the trump suit is no-trump
+     * @param noTrump2 True if the trump suit is no-trump
      */
-    public void endTurns(int points1, int points2, boolean double1, boolean double2, boolean noTrump) {
+    public void endTurns(int points1, int points2, boolean double1, boolean double2, boolean noTrump1, boolean noTrump2) {
         if (points1 < 0 || points1 > 60
                 || points2 < 0 || points2 > 60
                 || points1 + points2 != 60)
@@ -81,7 +82,7 @@ public abstract class Manille {
         if(double2)
             mult++;
 
-        if(noTrump)
+        if(noTrump1 || noTrump2)
             mult++;
 
         if (points1 == points2) {

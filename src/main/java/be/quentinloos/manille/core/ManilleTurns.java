@@ -1,5 +1,7 @@
 package be.quentinloos.manille.core;
 
+import android.util.Log;
+
 /**
  * A X-turns Manille card game.
  *
@@ -19,7 +21,7 @@ public class ManilleTurns extends Manille {
     public ManilleTurns(int ending, int nbrNoTrump) {
         super();
         this.ending = ending;
-        this.nbrNoTrump1 = this.nbrNoTrump2 = nbrNoTrump;
+        this.nbrNoTrump = this.nbrNoTrump1 = this.nbrNoTrump2 = nbrNoTrump;
     }
 
     public int getEnding() {
@@ -46,12 +48,13 @@ public class ManilleTurns extends Manille {
         this.nbrNoTrump2 = nbrNoTrump2;
     }
 
-    public void setNoTrump(int team) {
-        if(team == 1 && nbrNoTrump1 > 0)
+    @Override
+    public void endTurns(int points1, int points2, boolean double1, boolean double2, boolean noTrump1, boolean noTrump2) {
+        if (noTrump1 && nbrNoTrump1 > 0)
             nbrNoTrump1--;
-        else if(team == 2 && nbrNoTrump2 > 0)
+        else if (noTrump2 && nbrNoTrump2 > 0)
             nbrNoTrump2--;
-        setNoTrump();
+        super.endTurns(points1, points2, double1, double2, noTrump1, noTrump2);
     }
 
     @Override
