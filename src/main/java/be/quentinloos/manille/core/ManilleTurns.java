@@ -65,9 +65,9 @@ public class ManilleTurns extends Manille {
     public String toString() {
         StringBuilder str = new StringBuilder("");
         if (getEnding() > 1)
-            str.append(String.format("Manille à %d points", getEnding()));
+            str.append(String.format("Manille à %d donnes", getEnding()));
         else
-            str.append(String.format("Manille à %d point", getEnding()));
+            str.append(String.format("Manille à %d donne", getEnding()));
         if(getNbrTurns() > 1)
             str.append(String.format(" - %d donnes", getNbrTurns()));
         else
