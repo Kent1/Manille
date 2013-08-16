@@ -29,14 +29,14 @@ public class MainActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
         if (savedInstanceState != null) {
             manille = ((ManilleParcelable) savedInstanceState.getParcelable("Manille")).getManille();
         } else {
             manille = new ManilleFree();
         }
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
     }
 
     @Override
