@@ -75,6 +75,8 @@ public abstract class Manille {
             turns.add(new int[] { 0, 0 });
         }
         else {
+            if (points1 == 60 || points2 == 60)
+                mult += 1;
             boolean winner = points1 > points2;
             int points = Math.abs((winner ? points1 : points2) - 30) * mult;
             this.score[winner ? 0 : 1] += points;
