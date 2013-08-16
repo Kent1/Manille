@@ -18,7 +18,6 @@ import be.quentinloos.manille.R;
 import be.quentinloos.manille.core.Manille;
 import be.quentinloos.manille.gui.activities.MainActivity;
 import be.quentinloos.manille.gui.dialogs.AddTurnDialog;
-import be.quentinloos.manille.gui.dialogs.NewManilleDialog;
 import be.quentinloos.manille.util.ScoreAdapter;
 
 /**
@@ -51,10 +50,6 @@ public class MainFragment extends Fragment {
            case R.id.action_add:
                DialogFragment turnDialog = AddTurnDialog.newInstance(R.string.action_add);
                turnDialog.show(getActivity().getSupportFragmentManager(), "add a turn");
-               return true;
-           case R.id.action_new:
-               DialogFragment manilleDialog = NewManilleDialog.newInstance(R.string.pick_a_type);
-               manilleDialog.show(getActivity().getSupportFragmentManager(), "type");
                return true;
           default:
              return super.onOptionsItemSelected(item);
