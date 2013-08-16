@@ -10,15 +10,16 @@ import android.widget.TextView;
 import java.util.List;
 
 import be.quentinloos.manille.R;
+import be.quentinloos.manille.core.Turn;
 
 /**
  * Adapter for scores in listview
  *
  * @author Quentin Loos <contact@quentinloos.be>
  */
-public class ScoreAdapter extends ArrayAdapter<int[]> {
+public class ScoreAdapter extends ArrayAdapter<Turn> {
 
-    public ScoreAdapter(Context context, List<int[]> objects) {
+    public ScoreAdapter(Context context, List<Turn> objects) {
         super(context, android.R.layout.simple_list_item_1, objects);
     }
 
@@ -40,8 +41,8 @@ public class ScoreAdapter extends ArrayAdapter<int[]> {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.points1.setText(Integer.toString(getItem(position)[0]));
-        holder.points2.setText(Integer.toString(getItem(position)[1]));
+        holder.points1.setText(Integer.toString(getItem(position).getPoints1()));
+        holder.points2.setText(Integer.toString(getItem(position).getPoints2()));
 
         return convertView;
     }

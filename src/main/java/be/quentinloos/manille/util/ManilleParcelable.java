@@ -9,6 +9,7 @@ import be.quentinloos.manille.core.Manille;
 import be.quentinloos.manille.core.ManilleFree;
 import be.quentinloos.manille.core.ManilleScore;
 import be.quentinloos.manille.core.ManilleTurns;
+import be.quentinloos.manille.core.Turn;
 
 /**
  * A parcelable implementation of Manille
@@ -45,10 +46,9 @@ public class ManilleParcelable implements Parcelable {
         int[] score = new int[2];
         source.readIntArray(score);
         manille.setScore(score);
-        ArrayList<int[]> turns = new ArrayList<int[]>();
+        ArrayList<Turn> turns = new ArrayList<Turn>();
         source.readList(turns, null);
         manille.setTurns(turns);
-        manille.setMult(source.readInt());
     }
 
     @Override
@@ -76,7 +76,6 @@ public class ManilleParcelable implements Parcelable {
         }
         dest.writeIntArray(manille.getScore());
         dest.writeList(manille.getTurns());
-        dest.writeInt(manille.getMult());
     }
 
     public static final Parcelable.Creator<ManilleParcelable> CREATOR = new Parcelable.Creator<ManilleParcelable>() {

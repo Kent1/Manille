@@ -49,13 +49,11 @@ public class ManilleTurns extends Manille {
         this.nbrNoTrump2 = nbrNoTrump2;
     }
 
-    @Override
-    public void endTurns(int points1, int points2, boolean double1, boolean double2, boolean noTrump1, boolean noTrump2) {
-        if (noTrump1 && nbrNoTrump1 < getNbrNoTrump())
+    public void addNoTrumpTurn(int team) {
+        if (team == 1 && nbrNoTrump1 < getNbrNoTrump())
             nbrNoTrump1++;
-        else if (noTrump2 && nbrNoTrump2 < getNbrNoTrump())
+        else if (team == 2 && nbrNoTrump2 < getNbrNoTrump())
             nbrNoTrump2++;
-        super.endTurns(points1, points2, double1, double2, noTrump1, noTrump2);
     }
 
     @Override

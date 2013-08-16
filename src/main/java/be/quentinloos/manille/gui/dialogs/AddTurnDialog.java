@@ -14,6 +14,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import be.quentinloos.manille.R;
+import be.quentinloos.manille.core.Manille;
+import be.quentinloos.manille.core.ManilleTurns;
+import be.quentinloos.manille.core.Turn;
 import be.quentinloos.manille.gui.activities.MainActivity;
 
 /**
@@ -69,12 +72,17 @@ public class AddTurnDialog extends DialogFragment {
 
                         boolean noTrump1 = ((CheckBox) view.findViewById(R.id.no_trump1)).isChecked();
                         boolean noTrump2 = ((CheckBox) view.findViewById(R.id.no_trump2)).isChecked();
+
                         try {
-                            ((MainActivity) getActivity()).getManille().endTurns(score1, score2, double1, double2, noTrump1, noTrump2);
+                            Turn turn = new Turn(score1, score2, (noTrump1 || noTrump2 ? Turn.Trump.NOTRUMP : null), double1, double2, 0);
+                            Manille manille = ((MainActivity) getActivity()).getManille();
+                            manille.addTurn(turn);
+                            if (manille instanceof ManilleTurns)
+                                ((ManilleTurns) manille).addNoTrumpTurn(1);
+                            ((MainActivity) getActivity()).refreshMainFragment();
                         } catch (IllegalArgumentException e) {
                             Toast.makeText(getActivity(), getString(R.string.exception_score), Toast.LENGTH_SHORT).show();
                         }
-                        ((MainActivity) getActivity()).refreshMainFragment();
                     }
                 })
 
