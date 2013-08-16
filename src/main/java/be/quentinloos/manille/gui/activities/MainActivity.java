@@ -29,20 +29,21 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
 
     private static final int RESULT_SETTINGS = 1;
 
-    private Manille manille;
+    private Manille manille = new ManilleFree();
+    private boolean recreate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        if (savedInstanceState != null)
+        Log.i("Manille", "OnCreate");
+        if (savedInstanceState != null) {
             manille = ((ManilleParcelable) savedInstanceState.getParcelable("Manille")).getManille();
-        else
-            manille = new ManilleFree();
+            recreate = true;
+        }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (savedInstanceState == null)
-            setActionBarNavigationList();
+        setActionBarNavigationList();
     }
 
     private void setActionBarNavigationList() {
@@ -128,7 +129,9 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
 
     @Override
     public boolean onNavigationItemSelected(int i, long l) {
-        newManille(i);
+        if (!recreate)
+            newManille(i);
+        recreate = false;
         return true;
     }
 }
