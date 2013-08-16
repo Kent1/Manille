@@ -1,6 +1,5 @@
 package be.quentinloos.manille.gui.dialogs;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -15,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import be.quentinloos.manille.R;
+import be.quentinloos.manille.gui.activities.MainActivity;
 
 /**
  * A dialog to add a turn
@@ -49,7 +49,6 @@ public class AddTurnDialog extends DialogFragment {
         pointsTeam2.addTextChangedListener(getTextWatcher(pointsTeam2, pointsTeam1));
 
         return new AlertDialog.Builder(this.getActivity())
-                .setIcon(android.R.drawable.ic_dialog_alert)
                 .setTitle(title)
                 .setView(view)
 
@@ -67,7 +66,12 @@ public class AddTurnDialog extends DialogFragment {
                         }
                         boolean double1 = ((CheckBox) view.findViewById(R.id.turn_double1)).isChecked();
                         boolean double2 = ((CheckBox) view.findViewById(R.id.turn_double2)).isChecked();
-                        mListener.onDialogPositiveClick(AddTurnDialog.this, score1, score2, double1, double2);
+                        try {
+                            ((MainActivity) getActivity()).getManille().endTurns(score1, score2, double1, double2);
+                        } catch (IllegalArgumentException e) {
+                            Toast.makeText(getActivity(), getString(R.string.exception_score), Toast.LENGTH_SHORT).show();
+                        }
+                        ((MainActivity) getActivity()).refreshMainFragment();
                     }
                 })
 
@@ -80,25 +84,6 @@ public class AddTurnDialog extends DialogFragment {
                 })
 
                 .create();
-    }
-
-    public interface NoticeDialogListener {
-        public void onDialogPositiveClick(DialogFragment dialog, int score1, int score2, boolean double1, boolean double2);
-    }
-
-    NoticeDialogListener mListener;
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        try {
-            // Instantiate the NoticeDialogListener so we can send events to the host
-            mListener = (NoticeDialogListener) activity;
-        } catch (ClassCastException e) {
-            // The activity doesn't implement the interface, throw exception
-            throw new ClassCastException(activity.toString()
-                    + " must implement NoticeDialogListener");
-        }
     }
 
     /**
