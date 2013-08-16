@@ -29,8 +29,11 @@ public class ManilleParcelable implements Parcelable {
             manille = new ManilleFree();
         else if (type == 1)
             this.manille = new ManilleScore(source.readInt());
-        else if (type == 2)
-            this.manille = new ManilleTurns(source.readInt());
+        else if (type == 2) {
+            this.manille = new ManilleTurns(source.readInt(), source.readInt());
+            ((ManilleTurns) manille).setNbrNoTrump1(source.readInt());
+            ((ManilleTurns) manille).setNbrNoTrump2(source.readInt());
+        }
         this.readFromParcel(source);
     }
 
@@ -67,6 +70,9 @@ public class ManilleParcelable implements Parcelable {
         else if (manille instanceof ManilleTurns) {
             dest.writeInt(2);
             dest.writeInt(((ManilleTurns) manille).getEnding());
+            dest.writeInt(((ManilleTurns) manille).getNbrNoTrump());
+            dest.writeInt(((ManilleTurns) manille).getNbrNoTrump1());
+            dest.writeInt(((ManilleTurns) manille).getNbrNoTrump2());
         }
         dest.writeIntArray(manille.getScore());
         dest.writeList(manille.getTurns());
