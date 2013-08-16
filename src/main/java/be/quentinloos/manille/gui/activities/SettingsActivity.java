@@ -36,6 +36,7 @@ public class SettingsActivity extends PreferenceActivity {
         bindPreferenceSummaryToValue(findPreference("team2"));
         bindPreferenceSummaryToValue(findPreference("score"));
         bindPreferenceSummaryToValue(findPreference("turns"));
+        bindPreferenceSummaryToValue(findPreference("no_trump"));
     }
 
     /**

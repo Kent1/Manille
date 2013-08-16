@@ -43,6 +43,15 @@
                 android:singleLine="true"
                 android:maxLines="1" />
 
+        <EditTextPreference
+                android:key="no_trump"
+                android:title="@string/setting_no_trump"
+                android:defaultValue="@string/no_trump"
+                android:selectAllOnFocus="true"
+                android:inputType="number"
+                android:singleLine="true"
+                android:maxLines="1" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>
