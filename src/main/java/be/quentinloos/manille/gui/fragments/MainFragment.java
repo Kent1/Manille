@@ -27,6 +27,7 @@ import be.quentinloos.manille.util.ScoreAdapter;
  */
 public class MainFragment extends Fragment {
 
+    private TextView title;
     private TextView team1, team2;
     private SharedPreferences preferences;
     private TextView pointsTeam1, pointsTeam2;
@@ -62,6 +63,8 @@ public class MainFragment extends Fragment {
 
         preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
+        title = (TextView) view.findViewById(R.id.title);
+
         team1 = (TextView) view.findViewById(R.id.team1);
         team2 = (TextView) view.findViewById(R.id.team2);
 
@@ -77,6 +80,8 @@ public class MainFragment extends Fragment {
 
     public void refresh() {
         Manille manille = ((MainActivity) getActivity()).getManille();
+
+        title.setText(manille.toString());
 
         team1.setText(preferences.getString("team1", getString(R.string.name_team_1)));
         team2.setText(preferences.getString("team2", getString(R.string.name_team_2)));

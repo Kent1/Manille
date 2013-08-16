@@ -1,6 +1,7 @@
 package be.quentinloos.manille.core;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -105,4 +106,7 @@ public abstract class Manille {
      * @return true if the game is ended
      */
     public abstract boolean isEnded();
+
+    @Override
+    public abstract String toString();
 }

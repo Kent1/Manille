@@ -15,4 +15,14 @@ public class ManilleFree extends Manille {
     public boolean isEnded() {
         return false;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder("Manille libre");
+        if(getNbrTurns() > 1)
+            str.append(String.format(" - %d donnes", getNbrTurns()));
+        else
+            str.append(String.format(" - %d donne", getNbrTurns()));
+        return str.toString();
+    }
 }
