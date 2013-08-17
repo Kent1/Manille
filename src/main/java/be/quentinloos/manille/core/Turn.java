@@ -29,22 +29,26 @@ public class Turn {
     private int points1, points2;
     private Trump trump;
     private int mult;
+    private int team;
 
     /**
      * Constructs a new Turn.
      *
      * @param points1 team1's points.
      * @param points2 team2's points.
+     * @param team the team who choose the trump suit.
      * @param trump The trump chosen.
      * @param double1 If the team1 have doubled ?
      * @param double2 If the team2 have doubled ?
      * @param reportedMult Number of draw play before.
      */
-    public Turn(int points1, int points2, Trump trump, boolean double1, boolean double2, int reportedMult) {
+    public Turn(int points1, int points2, int team, Trump trump, boolean double1, boolean double2, int reportedMult) {
         if (points1 < 0 || points1 > 60 || points2 < 0 || points2 > 60 || points1 + points2 != 60)
             throw new IllegalArgumentException("Bad number of points");
 
         this.mult = computeMult(points1, points2, trump, double1, double2, reportedMult);
+
+        this.team = team;
 
         this.trump = trump;
 
@@ -52,16 +56,16 @@ public class Turn {
         this.points2 = (points2 > 29) ? (points2 - 30) * mult : 0;
     }
 
-    public Turn(int points1, int points2, Trump trump) {
-        this(points1, points2, trump, false, false, 0);
+    public Turn(int points1, int points2, int team, Trump trump) {
+        this(points1, points2, team, trump, false, false, 0);
     }
 
-    public Turn(int points1, int points2, Trump trump, boolean double1, boolean double2) {
-        this(points1, points2, trump, double1, double2, 0);
+    public Turn(int points1, int points2, int team, Trump trump, boolean double1, boolean double2) {
+        this(points1, points2, team, trump, double1, double2, 0);
     }
 
-    public Turn(int points1, int points2, Trump trump, int reportedMult) {
-        this(points1, points2, trump, false, false, reportedMult);
+    public Turn(int points1, int points2, int team, Trump trump, int reportedMult) {
+        this(points1, points2, team, trump, false, false, reportedMult);
     }
 
     /**
@@ -100,6 +104,14 @@ public class Turn {
 
         this.points1 = points1;
         this.points2 = points2;
+    }
+
+    public int getTeam() {
+        return team;
+    }
+
+    public void setTeam(int team) {
+        this.team = team;
     }
 
     public Trump getTrump() {
