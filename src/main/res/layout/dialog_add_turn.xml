@@ -10,86 +10,72 @@
             android:layout_height="wrap_content"
             android:baselineAligned="false">
 
-        <LinearLayout
+        <RadioGroup
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/radio_group_team">
+
+            <RadioButton
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="Nous"
+                    android:id="@+id/radio_team1"
+                    android:gravity="center"
+                    android:layout_margin="@dimen/margin"
+                    android:layout_weight="1"/>
+
+            <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:text="Eux"
+                    android:id="@+id/radio_team2"
+                    android:gravity="center"
+                    android:layout_margin="@dimen/margin"
+                    android:layout_weight="1"/>
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+        <FrameLayout
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:layout_margin="@dimen/margin">
 
-            <FrameLayout
-                    android:layout_width="fill_parent"
+            <EditText
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/margin">
+                    android:inputType="number"
+                    android:ems="10"
+                    android:id="@+id/turn_score2"
+                    android:padding="@dimen/margin"
+                    android:layout_gravity="center"
+                    android:gravity="center"/>
 
-                <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:text="Score 1ère équipe"
-                        android:id="@+id/textView1"
-                        android:gravity="center"/>
+        </FrameLayout>
 
-            </FrameLayout>
-
-            <FrameLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_margin="@dimen/margin">
-
-                <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:ems="10"
-                        android:id="@+id/turn_score1"
-                        android:padding="@dimen/margin"
-                        android:layout_gravity="center"
-                        android:gravity="center"/>
-
-            </FrameLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
+        <FrameLayout
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:layout_margin="@dimen/margin">
 
-            <FrameLayout
-                    android:layout_width="fill_parent"
+            <EditText
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/margin">
+                    android:inputType="number"
+                    android:ems="10"
+                    android:id="@+id/turn_score1"
+                    android:padding="@dimen/margin"
+                    android:layout_gravity="center"
+                    android:gravity="center"/>
 
-                <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:text="Score 2ème équipe"
-                        android:id="@+id/textView2"
-                        android:gravity="center"/>
-
-            </FrameLayout>
-
-            <FrameLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_margin="@dimen/margin">
-
-                <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:ems="10"
-                        android:id="@+id/turn_score2"
-                        android:padding="@dimen/margin"
-                        android:layout_gravity="center"
-                        android:gravity="center"/>
-
-            </FrameLayout>
-
-        </LinearLayout>
-
+        </FrameLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -133,43 +119,16 @@
     </LinearLayout>
 
     <LinearLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:baselineAligned="false"
-            >
+            android:gravity="center">
 
-        <FrameLayout
+        <Spinner
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_margin="@dimen/margin">
-
-            <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sans atout"
-                    android:id="@+id/no_trump1"
-                    android:checked="false"
-                    android:layout_gravity="center"/>
-
-        </FrameLayout>
-
-        <FrameLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_margin="@dimen/margin">
-
-            <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sans atout"
-                    android:id="@+id/no_trump2"
-                    android:layout_gravity="center"
-                    android:checked="false"/>
-
-        </FrameLayout>
-
+                android:id="@+id/spinner"
+                android:layout_margin="@dimen/margin"/>
     </LinearLayout>
 
 </LinearLayout>

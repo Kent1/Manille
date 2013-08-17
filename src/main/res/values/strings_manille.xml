@@ -6,6 +6,14 @@
         <item>Manille %1$d hands</item>
     </string-array>
 
+    <string-array name="trump">
+        <item>♣ Trèfles</item>
+        <item><font fgcolor="#ffff0000">♦</font> Diamonds</item>
+        <item><font fgcolor="#ffff0000">♥</font> Hearts</item>
+        <item>♠ Spades</item>
+        <item>× Sans atout</item>
+    </string-array>
+
     <string name="zero_turns">no hand</string>
 
     <plurals name="number_of_turns">

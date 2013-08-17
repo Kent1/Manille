@@ -8,11 +8,22 @@ package be.quentinloos.manille.core;
 public class Turn {
 
     public enum Trump {
-        CLUBS,    // Trèfles
-        DIAMONDS, // Carreaux
-        HEARTS,   // Coeurs
-        SPADES,   // Piques
-        NOTRUMP   // Sans atout
+        CLUBS    ("♣"), // Trèfles
+        DIAMONDS ("♦"), // Carreaux
+        HEARTS   ("♥"), // Coeurs
+        SPADES   ("♠"), // Piques
+        NOTRUMP  ("×"); // Sans atout
+
+        private final String symbol;
+
+        private Trump(String symbol) {
+            this.symbol = symbol;
+        }
+
+        @Override
+        public String toString() {
+            return this.symbol;
+        }
     }
 
     private int points1, points2;

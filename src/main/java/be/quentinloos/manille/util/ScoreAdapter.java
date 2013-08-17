@@ -32,8 +32,9 @@ public class ScoreAdapter extends ArrayAdapter<Turn> {
             holder = new ViewHolder();
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_turn, null);
 
-            holder.points1 = (TextView)convertView.findViewById(R.id.scoreteam1);
-            holder.points2 = (TextView)convertView.findViewById(R.id.scoreteam2);
+            holder.symbol  = (TextView) convertView.findViewById(R.id.symbol);
+            holder.points1 = (TextView) convertView.findViewById(R.id.scoreteam1);
+            holder.points2 = (TextView) convertView.findViewById(R.id.scoreteam2);
 
             convertView.setTag(holder);
         }
@@ -41,6 +42,9 @@ public class ScoreAdapter extends ArrayAdapter<Turn> {
             holder = (ViewHolder) convertView.getTag();
         }
 
+        holder.symbol.setText(getItem(position).getTrump().toString());
+        if (getItem(position).getTrump() == Turn.Trump.DIAMONDS || getItem(position).getTrump() == Turn.Trump.HEARTS)
+            holder.symbol.setTextColor(getContext().getResources().getColor(android.R.color.holo_red_dark));
         holder.points1.setText(Integer.toString(getItem(position).getPoints1()));
         holder.points2.setText(Integer.toString(getItem(position).getPoints2()));
 
@@ -48,6 +52,7 @@ public class ScoreAdapter extends ArrayAdapter<Turn> {
     }
 
     private class ViewHolder {
+        TextView symbol;
         TextView points1;
         TextView points2;
     }

@@ -6,6 +6,14 @@
         <item>Manille à %1$d donnes</item>
     </string-array>
 
+    <string-array name="trump">
+        <item>♣ Clubs</item>
+        <item><font fgcolor="#ffff0000">♦</font> Carreaux</item>
+        <item><font fgcolor="#ffff0000">♥</font> Coeurs</item>
+        <item>♠ Piques</item>
+        <item>× Sans atout</item>
+    </string-array>
+
     <string name="zero_turns">Aucune donne</string>
 
     <plurals name="number_of_turns">
