@@ -11,4 +11,5 @@
         <item>♠ Piques</item>
         <item>× Sans atout</item>
     </string-array>
+    <string name="no_team_selected">Veuillez sélectionner l\'équipe ayant choisi l\'atout</string>
 </resources>

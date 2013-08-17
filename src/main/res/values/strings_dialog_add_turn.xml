@@ -11,4 +11,5 @@
         <item>♠ Spades</item>
         <item>× Sans atout</item>
     </string-array>
+    <string name="no_team_selected">Please select the team who choose the trump suit</string>
 </resources>

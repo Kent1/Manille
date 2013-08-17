@@ -85,6 +85,11 @@ public class AddTurnDialog extends DialogFragment {
                     public void onClick(DialogInterface dialog, int id) {
                         int score1 = 0, score2 = 0;
 
+                        if (rg.getCheckedRadioButtonId() == -1) {
+                            Toast.makeText(view.getContext(), getString(R.string.no_team_selected), Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
                         try {
                             score1 = Integer.parseInt(pointsTeam1.getText().toString());
                             score2 = Integer.parseInt(pointsTeam2.getText().toString());
