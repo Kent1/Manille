@@ -5,19 +5,19 @@
     <string name="app_name">Manille</string>
     <string name="title_activity_main">Manille</string>
 
-    <string name="exception_score">Score incorrect</string>
+    <string name="exception_score">Incorrect scoring</string>
 
-    <string name="title">Manille libre - 11 donnes actuellement</string>
+    <string name="title">Manille free - 11 hands currently</string>
     <string name="points_team_1">35</string>
     <string name="points_team_2">24</string>
 
     <!-- Menu -->
-    <string name="action_settings">Paramètres</string>
-    <string name="action_new">Nouvelle partie</string>
-    <string name="action_add">Ajouter une donne</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_new">New game</string>
+    <string name="action_add">Add a hand</string>
 
     <!-- Dialogs -->
     <string name="ok">OK</string>
-    <string name="cancel">Annuler</string>
+    <string name="cancel">Cancel</string>
 
 </resources>

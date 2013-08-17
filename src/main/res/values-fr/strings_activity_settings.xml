@@ -21,6 +21,6 @@
     <string name="setting_turn_limit">Nombre de plis dans une partie</string>
     <string name="turn_limit">12</string>
 
-    <string name="setting_no_trump">Nombre de mains sans atouts</string>
+    <string name="setting_no_trump">Nombre de mains sans atouts par équipe</string>
     <string name="no_trump">2</string>
 </resources>

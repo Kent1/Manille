@@ -1,26 +1,26 @@
 <resources>
-    <string name="title_activity_settings">Paramètres</string>
+    <string name="title_activity_settings">Settings</string>
 
     <!-- Strings related to Settings -->
 
     <!-- Example Team settings -->
-    <string name="pref_header_team">Équipe</string>
+    <string name="pref_header_team">Team</string>
 
-    <string name="setting_team_1">Nom de la première équipe</string>
+    <string name="setting_team_1">Team1\'s name</string>
     <string name="name_team_1">Nous</string>
 
-    <string name="setting_team_2">Nom de la deuxième équipe</string>
+    <string name="setting_team_2">Team2\'s name</string>
     <string name="name_team_2">Eux</string>
 
     <!-- Example settings for Manille game -->
-    <string name="pref_header_game">Jeu</string>
+    <string name="pref_header_game">Game</string>
 
-    <string name="setting_score_limit">Score pour terminer la partie</string>
+    <string name="setting_score_limit">Points to get to finish the game</string>
     <string name="score_limit">101</string>
 
-    <string name="setting_turn_limit">Nombre de plis dans une partie</string>
+    <string name="setting_turn_limit">Hands to play to finish the game</string>
     <string name="turn_limit">12</string>
 
-    <string name="setting_no_trump">Nombre de mains sans atouts</string>
+    <string name="setting_no_trump">Number of no-trump per team</string>
     <string name="no_trump">2</string>
 </resources>
