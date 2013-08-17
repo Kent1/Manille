@@ -17,6 +17,7 @@ import be.quentinloos.manille.core.Manille;
 import be.quentinloos.manille.core.ManilleFree;
 import be.quentinloos.manille.core.ManilleScore;
 import be.quentinloos.manille.core.ManilleTurns;
+import be.quentinloos.manille.core.Turn;
 import be.quentinloos.manille.util.ManilleParcelable;
 import be.quentinloos.manille.gui.fragments.MainFragment;
 

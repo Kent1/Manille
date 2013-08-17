@@ -75,7 +75,10 @@ public class ManilleParcelable implements Parcelable {
             dest.writeInt(((ManilleTurns) manille).getNbrNoTrump2());
         }
         dest.writeIntArray(manille.getScore());
-        dest.writeList(manille.getTurns());
+        ArrayList<TurnParcelable> turnParcelables = new ArrayList<TurnParcelable>();
+        for (Turn turn : manille.getTurns())
+            turnParcelables.add(new TurnParcelable(turn));
+        dest.writeList(turnParcelables);
     }
 
     public static final Parcelable.Creator<ManilleParcelable> CREATOR = new Parcelable.Creator<ManilleParcelable>() {

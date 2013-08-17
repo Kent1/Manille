@@ -94,11 +94,27 @@ public class Turn {
         return points2;
     }
 
+    public void setPoints(int points1, int points2) {
+        if (points1 < 0 || points1 > 60 || points2 < 0 || points2 > 60 || points1 + points2 != 60)
+            throw new IllegalArgumentException("Bad number of points");
+
+        this.points1 = points1;
+        this.points2 = points2;
+    }
+
     public Trump getTrump() {
         return trump;
     }
 
+    public void setTrump(Trump trump) {
+        this.trump = trump;
+    }
+
     public int getMult() {
         return mult;
+    }
+
+    public void setMult(int mult) {
+        this.mult = mult;
     }
 }
