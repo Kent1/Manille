@@ -55,6 +55,10 @@ public class MainFragment extends Fragment {
                DialogFragment turnDialog = AddTurnDialog.newInstance(R.string.action_add);
                turnDialog.show(getActivity().getSupportFragmentManager(), "add a turn");
                return true;
+           case R.id.action_remove:
+               ((MainActivity) getActivity()).getManille().removeLastHand();
+               refresh();
+               return true;
           default:
              return super.onOptionsItemSelected(item);
        }

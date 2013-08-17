@@ -15,6 +15,7 @@
     <string name="action_settings">Paramètres</string>
     <string name="action_new">Nouvelle partie</string>
     <string name="action_add">Ajouter une donne</string>
+    <string name="action_remove">Supprimer la dernière main</string>
 
     <!-- Dialogs -->
     <string name="ok">OK</string>

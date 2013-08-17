@@ -7,4 +7,9 @@
           android:orderInCategory="100"
           yourapp:showAsAction="always"
           android:icon="@drawable/ic_add"/>
+    <item android:id="@+id/action_remove"
+          android:title="@string/action_remove"
+          android:orderInCategory="100"
+          yourapp:showAsAction="ifRoom"
+          android:icon="@drawable/ic_undo"/>
 </menu>

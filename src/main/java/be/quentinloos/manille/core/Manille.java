@@ -56,4 +56,12 @@ public abstract class Manille {
      * @return true if the game is ended
      */
     public abstract boolean isEnded();
+
+    public void removeLastHand() {
+        if(turns.size() > 0) {
+            Turn turn = turns.remove(turns.size() - 1);
+            score[0]-= turn.getPoints1();
+            score[1]-= turn.getPoints2();
+        }
+    }
 }
