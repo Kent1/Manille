@@ -9,6 +9,7 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -99,7 +100,13 @@ public class AddTurnDialog extends DialogFragment {
 
                         try {
                             Manille manille = ((MainActivity) getActivity()).getManille();
-                            manille.addTurn(new Turn(score1, score2, trump, double1, double2, 0));
+
+                            // How many draw play before ?
+                            int draw = 0;
+                            while (manille.getNbrTurns() > draw &&manille.getTurns().get(manille.getNbrTurns() - (draw + 1)).isDraw())
+                                draw++;
+
+                            manille.addTurn(new Turn(score1, score2, trump, double1, double2, draw));
                             if (manille instanceof ManilleTurns && trump == Turn.Trump.NOTRUMP) {
                                 if (rg.getCheckedRadioButtonId() == R.id.radio_team1)
                                     ((ManilleTurns) manille).addNoTrumpTurn(1);

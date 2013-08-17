@@ -117,4 +117,8 @@ public class Turn {
     public void setMult(int mult) {
         this.mult = mult;
     }
+
+    public boolean isDraw() {
+        return this.points1 == this.points2;
+    }
 }
