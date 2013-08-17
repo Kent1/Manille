@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="manille_array">
+        <item>Manille libre</item>
+        <item>Manille à %1$d points</item>
+        <item>Manille à %1$d donnes</item>
+    </string-array>
+
+    <string name="zero_turns">Aucune donne</string>
+
+    <plurals name="number_of_turns">
+        <item quantity="one">1 donne</item>
+        <item quantity="other">%1$d donnes</item>
+    </plurals>
+
+    <string name="number_of_notrump">%1$d/%2$d sans atout</string>
+
+</resources>
