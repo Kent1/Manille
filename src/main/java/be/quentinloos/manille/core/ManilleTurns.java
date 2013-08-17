@@ -60,20 +60,4 @@ public class ManilleTurns extends Manille {
     public boolean isEnded() {
         return this.getNbrTurns() >= ending;
     }
-
-    @Override
-    public String toString() {
-        StringBuilder str = new StringBuilder("");
-        if (getEnding() > 1)
-            str.append(String.format("Manille à %d donnes", getEnding()));
-        else
-            str.append(String.format("Manille à %d donne", getEnding()));
-        if(getNbrTurns() > 1)
-            str.append(String.format(" - %d donnes", getNbrTurns()));
-        else
-            str.append(String.format(" - %d donne", getNbrTurns()));
-        str.append(String.format("\n%d/%d sans atout", getNbrNoTrump1(), getNbrNoTrump()));
-        str.append(String.format(" - %d/%d sans atout", getNbrNoTrump2(), getNbrNoTrump()));
-        return str.toString();
-    }
 }

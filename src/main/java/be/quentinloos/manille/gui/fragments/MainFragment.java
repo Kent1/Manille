@@ -16,6 +16,9 @@ import android.widget.TextView;
 
 import be.quentinloos.manille.R;
 import be.quentinloos.manille.core.Manille;
+import be.quentinloos.manille.core.ManilleFree;
+import be.quentinloos.manille.core.ManilleScore;
+import be.quentinloos.manille.core.ManilleTurns;
 import be.quentinloos.manille.gui.activities.MainActivity;
 import be.quentinloos.manille.gui.dialogs.AddTurnDialog;
 import be.quentinloos.manille.util.ScoreAdapter;
@@ -81,7 +84,7 @@ public class MainFragment extends Fragment {
     public void refresh() {
         Manille manille = ((MainActivity) getActivity()).getManille();
 
-        title.setText(manille.toString());
+        title.setText(getTitle(manille));
 
         team1.setText(preferences.getString("team1", getString(R.string.name_team_1)));
         team2.setText(preferences.getString("team2", getString(R.string.name_team_2)));
@@ -91,5 +94,48 @@ public class MainFragment extends Fragment {
 
         pointsTeam1.setText(Integer.toString(manille.getScore()[0]));
         pointsTeam2.setText(Integer.toString(manille.getScore()[1]));
+    }
+
+    private String getTitle(Manille manille) {
+        // Retrieves preferences
+        String[] array = getResources().getStringArray(R.array.manille_array);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        array[1] = String.format(array[1], Integer.parseInt(
+                preferences.getString("score", getString(R.string.score_limit))));
+        array[2] = String.format(array[2], Integer.parseInt(
+                preferences.getString("turns", getString(R.string.turn_limit))));
+
+        // Constructs a String with the correct type of Manille
+        StringBuilder str = new StringBuilder("");
+        if(manille instanceof ManilleFree) {
+            str.append(array[0]);
+        }
+        else if(manille instanceof ManilleScore)
+            str.append(array[1]);
+        else if(manille instanceof ManilleTurns)
+            str.append(array[2]);
+
+        str.append(" - ");
+
+        // Display the number of hands played
+        if (manille.getNbrTurns() ==0)
+            str.append(getString(R.string.zero_turns));
+        else
+            str.append(getResources().getQuantityString(
+                    R.plurals.number_of_turns, manille.getNbrTurns(), manille.getNbrTurns()));
+
+        // Display number of nutrump plays and notrump to do
+        if (manille instanceof ManilleTurns) {
+            str.append("\n");
+            str.append(getString(R.string.number_of_notrump),
+                    ((ManilleTurns) manille).getNbrNoTrump1(),
+                    ((ManilleTurns) manille).getNbrNoTrump());
+            str.append(" - ");
+            str.append(getString(R.string.number_of_notrump),
+                    ((ManilleTurns) manille).getNbrNoTrump2(),
+                    ((ManilleTurns) manille).getNbrNoTrump());
+        }
+
+        return str.toString();
     }
 }
