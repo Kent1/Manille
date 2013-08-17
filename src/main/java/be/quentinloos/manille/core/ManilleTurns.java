@@ -1,7 +1,5 @@
 package be.quentinloos.manille.core;
 
-import android.util.Log;
-
 /**
  * A X-turns Manille card game.
  *
@@ -50,9 +48,9 @@ public class ManilleTurns extends Manille {
     }
 
     public void addNoTrumpTurn(int team) {
-        if (team == 1 && nbrNoTrump1 < getNbrNoTrump())
+        if (team == 1 && nbrNoTrump1 < nbrNoTrump)
             nbrNoTrump1++;
-        else if (team == 2 && nbrNoTrump2 < getNbrNoTrump())
+        else if (team == 2 && nbrNoTrump2 < nbrNoTrump)
             nbrNoTrump2++;
     }
 

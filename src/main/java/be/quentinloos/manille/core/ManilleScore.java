@@ -7,7 +7,7 @@ package be.quentinloos.manille.core;
  */
 public class ManilleScore extends Manille {
 
-    /** points to get to finish the game */
+    /** Points to get to finish the game */
     private int ending;
 
     public ManilleScore(int ending) {
