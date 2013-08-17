@@ -107,9 +107,9 @@ public class AddTurnDialog extends DialogFragment {
                             Manille manille = ((MainActivity) getActivity()).getManille();
 
                             // How many draw play before ?
-                            int draw = 0;
-                            while (manille.getNbrTurns() > draw && manille.getTurns().get(manille.getNbrTurns() - (draw + 1)).isDraw())
-                                draw++;
+                            int reportedMult= 0;
+                            if (manille.getNbrTurns() > 0 && manille.getTurns().get(manille.getNbrTurns() - 1).isDraw())
+                                reportedMult += manille.getTurns().get(manille.getNbrTurns() - 1).getMult();
 
                             int team = 0;
                             if (rg.getCheckedRadioButtonId() == R.id.radio_team1)
@@ -117,7 +117,7 @@ public class AddTurnDialog extends DialogFragment {
                             else if (rg.getCheckedRadioButtonId() == R.id.radio_team2)
                                 team = 2;
 
-                            manille.addTurn(new Turn(score1, score2, team, trump, double1, double2, draw));
+                            manille.addTurn(new Turn(score1, score2, team, trump, double1, double2, reportedMult));
 
                             ((MainActivity) getActivity()).refreshMainFragment();
                         } catch (IllegalArgumentException e) {
