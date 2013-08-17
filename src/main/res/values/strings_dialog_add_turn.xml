@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="double_points">Double</string>
+
+    <string-array name="trump">
+        <item>♣ Trèfles</item>
+        <item><font fgcolor="#ffff0000">♦</font> Diamonds</item>
+        <item><font fgcolor="#ffff0000">♥</font> Hearts</item>
+        <item>♠ Spades</item>
+        <item>× Sans atout</item>
+    </string-array>
+</resources>

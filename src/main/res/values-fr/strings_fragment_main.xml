@@ -6,14 +6,6 @@
         <item>Manille à %1$d donnes</item>
     </string-array>
 
-    <string-array name="trump">
-        <item>♣ Clubs</item>
-        <item><font fgcolor="#ffff0000">♦</font> Carreaux</item>
-        <item><font fgcolor="#ffff0000">♥</font> Coeurs</item>
-        <item>♠ Piques</item>
-        <item>× Sans atout</item>
-    </string-array>
-
     <string name="zero_turns">Aucune donne</string>
 
     <plurals name="number_of_turns">
@@ -23,4 +15,8 @@
 
     <string name="number_of_notrump">%1$d/%2$d sans atout</string>
 
+    <!-- Menu -->
+    <string name="action_new">Nouvelle partie</string>
+    <string name="action_add">Ajouter une donne</string>
+    <string name="action_remove">Supprimer la dernière main</string>
 </resources>

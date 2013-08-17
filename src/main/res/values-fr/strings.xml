@@ -1,25 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!--Activity_main -->
     <string name="app_name">Manille</string>
-    <string name="title_activity_main">Manille</string>
 
     <string name="exception_score">Score incorrect</string>
-
-    <string name="title">Manille libre - 11 donnes actuellement</string>
-    <string name="points_team1">35</string>
-    <string name="points_team2">24</string>
-
-    <!-- Menu -->
-    <string name="action_settings">Paramètres</string>
-    <string name="action_new">Nouvelle partie</string>
-    <string name="action_add">Ajouter une donne</string>
-    <string name="action_remove">Supprimer la dernière main</string>
-
-    <!-- Dialogs -->
-    <string name="ok">OK</string>
-    <string name="cancel">Annuler</string>
-    <string name="double_points">Double</string>
-
 </resources>
