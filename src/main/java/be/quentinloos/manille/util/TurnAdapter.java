@@ -13,13 +13,13 @@ import be.quentinloos.manille.R;
 import be.quentinloos.manille.core.Turn;
 
 /**
- * Adapter for scores in listview
+ * Adapter for turns in listview
  *
  * @author Quentin Loos <contact@quentinloos.be>
  */
-public class ScoreAdapter extends ArrayAdapter<Turn> {
+public class TurnAdapter extends ArrayAdapter<Turn> {
 
-    public ScoreAdapter(Context context, List<Turn> objects) {
+    public TurnAdapter(Context context, List<Turn> objects) {
         super(context, android.R.layout.simple_list_item_1, objects);
     }
 

@@ -21,7 +21,7 @@ import be.quentinloos.manille.core.ManilleScore;
 import be.quentinloos.manille.core.ManilleTurns;
 import be.quentinloos.manille.gui.activities.MainActivity;
 import be.quentinloos.manille.gui.dialogs.AddTurnDialog;
-import be.quentinloos.manille.util.ScoreAdapter;
+import be.quentinloos.manille.util.TurnAdapter;
 
 /**
  * Main Fragment
@@ -93,7 +93,7 @@ public class MainFragment extends Fragment {
         team1.setText(preferences.getString("team1", getString(R.string.name_team_1)));
         team2.setText(preferences.getString("team2", getString(R.string.name_team_2)));
 
-        ScoreAdapter adapter = new ScoreAdapter(getActivity(), manille.getTurns());
+        TurnAdapter adapter = new TurnAdapter(getActivity(), manille.getTurns());
         lv.setAdapter(adapter);
 
         pointsTeam1.setText(Integer.toString(manille.getScore()[0]));
