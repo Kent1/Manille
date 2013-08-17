@@ -8,8 +8,8 @@
     <string name="exception_score">Score incorrect</string>
 
     <string name="title">Manille libre - 11 donnes actuellement</string>
-    <string name="points_team_1">35</string>
-    <string name="points_team_2">24</string>
+    <string name="points_team1">35</string>
+    <string name="points_team2">24</string>
 
     <!-- Menu -->
     <string name="action_settings">Paramètres</string>
@@ -20,5 +20,6 @@
     <!-- Dialogs -->
     <string name="ok">OK</string>
     <string name="cancel">Annuler</string>
+    <string name="double_points">Double</string>
 
 </resources>

@@ -8,8 +8,8 @@
     <string name="exception_score">Incorrect scoring</string>
 
     <string name="title">Manille free - 11 hands currently</string>
-    <string name="points_team_1">35</string>
-    <string name="points_team_2">24</string>
+    <string name="points_team1">35</string>
+    <string name="points_team2">24</string>
 
     <!-- Menu -->
     <string name="action_settings">Settings</string>
@@ -20,5 +20,6 @@
     <!-- Dialogs -->
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="double_points">Double</string>
 
 </resources>

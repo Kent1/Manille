@@ -75,8 +75,8 @@ public class MainFragment extends Fragment {
         team1 = (TextView) view.findViewById(R.id.team1);
         team2 = (TextView) view.findViewById(R.id.team2);
 
-        pointsTeam1 = (TextView) view.findViewById(R.id.points_team_1);
-        pointsTeam2 = (TextView) view.findViewById(R.id.points_team_2);
+        pointsTeam1 = (TextView) view.findViewById(R.id.points_team1);
+        pointsTeam2 = (TextView) view.findViewById(R.id.points_team2);
 
         lv = (ListView) view.findViewById(R.id.listView);
 
@@ -90,8 +90,8 @@ public class MainFragment extends Fragment {
 
         title.setText(getTitle(manille));
 
-        team1.setText(preferences.getString("team1", getString(R.string.name_team_1)));
-        team2.setText(preferences.getString("team2", getString(R.string.name_team_2)));
+        team1.setText(preferences.getString("team1", getString(R.string.default_team1)));
+        team2.setText(preferences.getString("team2", getString(R.string.default_team2)));
 
         TurnAdapter adapter = new TurnAdapter(getActivity(), manille.getTurns());
         lv.setAdapter(adapter);
@@ -105,9 +105,9 @@ public class MainFragment extends Fragment {
         String[] array = getResources().getStringArray(R.array.manille_array);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         array[1] = String.format(array[1], Integer.parseInt(
-                preferences.getString("score", getString(R.string.score_limit))));
+                preferences.getString("score", getString(R.string.default_score))));
         array[2] = String.format(array[2], Integer.parseInt(
-                preferences.getString("turns", getString(R.string.turn_limit))));
+                preferences.getString("turns", getString(R.string.default_turns))));
 
         // Constructs a String with the correct type of Manille
         StringBuilder str = new StringBuilder("");

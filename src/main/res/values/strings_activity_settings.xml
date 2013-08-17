@@ -6,21 +6,21 @@
     <!-- Example Team settings -->
     <string name="pref_header_team">Team</string>
 
-    <string name="setting_team_1">Team1\'s name</string>
-    <string name="name_team_1">Nous</string>
+    <string name="setting_team1">Team1\'s name</string>
+    <string name="default_team1">Nous</string>
 
-    <string name="setting_team_2">Team2\'s name</string>
-    <string name="name_team_2">Eux</string>
+    <string name="setting_team2">Team2\'s name</string>
+    <string name="default_team2">Eux</string>
 
     <!-- Example settings for Manille game -->
     <string name="pref_header_game">Game</string>
 
     <string name="setting_score_limit">Points to get to finish the game</string>
-    <string name="score_limit">101</string>
+    <string name="default_score">101</string>
 
     <string name="setting_turn_limit">Hands to play to finish the game</string>
-    <string name="turn_limit">12</string>
+    <string name="default_turns">12</string>
 
     <string name="setting_no_trump">Number of no-trump per team</string>
-    <string name="no_trump">2</string>
+    <string name="default_no_trump">2</string>
 </resources>

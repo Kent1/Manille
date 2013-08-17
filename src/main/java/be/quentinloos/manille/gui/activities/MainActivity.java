@@ -34,7 +34,6 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.i("Manille", "OnCreate");
         if (savedInstanceState != null) {
             manille = ((ManilleParcelable) savedInstanceState.getParcelable("Manille")).getManille();
             recreate = true;
@@ -49,8 +48,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
     private void setActionBarNavigationList() {
         String[] array = getResources().getStringArray(R.array.manille_array);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        array[1] = String.format(array[1], Integer.parseInt(preferences.getString("score", getString(R.string.score_limit))));
-        array[2] = String.format(array[2], Integer.parseInt(preferences.getString("turns", getString(R.string.turn_limit))));
+        array[1] = String.format(array[1], Integer.parseInt(preferences.getString("score", getString(R.string.default_score))));
+        array[2] = String.format(array[2], Integer.parseInt(preferences.getString("turns", getString(R.string.default_turns))));
 
         SpinnerAdapter mSpinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, array);
 
@@ -110,13 +109,13 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
                 break;
 
             case 1:
-                manille = new ManilleScore(Integer.parseInt(preferences.getString("score", getString(R.string.score_limit))));
+                manille = new ManilleScore(Integer.parseInt(preferences.getString("score", getString(R.string.default_score))));
                 break;
 
             case 2:
                 manille = new ManilleTurns(
-                        Integer.parseInt(preferences.getString("turns", getString(R.string.turn_limit))),
-                        Integer.parseInt(preferences.getString("no_trump", getString(R.string.no_trump)))
+                        Integer.parseInt(preferences.getString("turns", getString(R.string.default_turns))),
+                        Integer.parseInt(preferences.getString("no_trump", getString(R.string.default_no_trump)))
                 );
                 break;
         }

@@ -3,7 +3,9 @@ package be.quentinloos.manille.gui.dialogs;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -34,8 +36,6 @@ public class AddTurnDialog extends DialogFragment {
     private EditText pointsTeam1, pointsTeam2;
     private Spinner spinner;
 
-    private Turn turn;
-
     public static AddTurnDialog newInstance(int title) {
         AddTurnDialog dialog = new AddTurnDialog();
         Bundle args = new Bundle();
@@ -53,10 +53,16 @@ public class AddTurnDialog extends DialogFragment {
 
         // RadioButton for teams
         rg = (RadioGroup) view.findViewById(R.id.radio_group_team);
+        RadioButton r1 = (RadioButton) rg.findViewById(R.id.radio_team1);
+        RadioButton r2 = (RadioButton) rg.findViewById(R.id.radio_team2);
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        r1.setText(preferences.getString("team1", getString(R.string.default_team1)));
+        r2.setText(preferences.getString("team2", getString(R.string.default_team2)));
 
         // EditText for points of the turn
-        pointsTeam1 = (EditText) view.findViewById(R.id.turn_score1);
-        pointsTeam2 = (EditText) view.findViewById(R.id.turn_score2);
+        pointsTeam1 = (EditText) view.findViewById(R.id.points1);
+        pointsTeam2 = (EditText) view.findViewById(R.id.points2);
 
         // Listener to autocomplete points
         pointsTeam1.addTextChangedListener(getTextWatcher(pointsTeam1, pointsTeam2));
@@ -92,9 +98,8 @@ public class AddTurnDialog extends DialogFragment {
                         Turn.Trump trump = Turn.Trump.values()[spinner.getSelectedItemPosition()];
 
                         try {
-                            Turn turn = new Turn(score1, score2, trump, double1, double2, 0);
                             Manille manille = ((MainActivity) getActivity()).getManille();
-                            manille.addTurn(turn);
+                            manille.addTurn(new Turn(score1, score2, trump, double1, double2, 0));
                             if (manille instanceof ManilleTurns && trump == Turn.Trump.NOTRUMP) {
                                 if (rg.getCheckedRadioButtonId() == R.id.radio_team1)
                                     ((ManilleTurns) manille).addNoTrumpTurn(1);
