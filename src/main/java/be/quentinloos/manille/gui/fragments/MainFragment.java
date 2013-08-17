@@ -127,13 +127,13 @@ public class MainFragment extends Fragment {
         // Display number of nutrump plays and notrump to do
         if (manille instanceof ManilleTurns) {
             str.append("\n");
-            str.append(getString(R.string.number_of_notrump),
+            str.append(String.format(getString(R.string.number_of_notrump),
                     ((ManilleTurns) manille).getNbrNoTrump1(),
-                    ((ManilleTurns) manille).getNbrNoTrump());
+                    ((ManilleTurns) manille).getNbrNoTrump()));
             str.append(" - ");
-            str.append(getString(R.string.number_of_notrump),
+            str.append(String.format(getString(R.string.number_of_notrump),
                     ((ManilleTurns) manille).getNbrNoTrump2(),
-                    ((ManilleTurns) manille).getNbrNoTrump());
+                    ((ManilleTurns) manille).getNbrNoTrump()));
         }
 
         return str.toString();
