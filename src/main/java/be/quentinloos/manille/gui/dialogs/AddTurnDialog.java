@@ -57,6 +57,16 @@ public class AddTurnDialog extends DialogFragment {
         RadioButton r1 = (RadioButton) rg.findViewById(R.id.radio_team1);
         RadioButton r2 = (RadioButton) rg.findViewById(R.id.radio_team2);
 
+        final Manille manille = ((MainActivity) getActivity()).getManille();
+
+        // Check the good radiobutton
+        if (manille.getNbrTurns() > 0) {
+            if (manille.getTurns().get(manille.getNbrTurns() - 1).getTeam() == 1)
+                rg.check(R.id.radio_team2);
+            else if (manille.getTurns().get(manille.getNbrTurns() - 1).getTeam() == 2)
+                rg.check(R.id.radio_team1);
+        }
+
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         r1.setText(preferences.getString("team1", getString(R.string.default_team1)));
         r2.setText(preferences.getString("team2", getString(R.string.default_team2)));
@@ -104,8 +114,6 @@ public class AddTurnDialog extends DialogFragment {
                         Turn.Trump trump = Turn.Trump.values()[spinner.getSelectedItemPosition()];
 
                         try {
-                            Manille manille = ((MainActivity) getActivity()).getManille();
-
                             // How many draw play before ?
                             int reportedMult= 0;
                             if (manille.getNbrTurns() > 0 && manille.getTurns().get(manille.getNbrTurns() - 1).isDraw())
