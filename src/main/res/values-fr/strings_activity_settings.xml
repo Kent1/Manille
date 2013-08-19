@@ -23,4 +23,11 @@
 
     <string name="setting_no_trump">Nombre de mains sans atouts par équipe</string>
     <string name="default_no_trump">2</string>
+
+    <string name="setting_mult">Facteur de multiplication</string>
+    <string name="default_mult">Addition</string>
+    <string-array name="setting_mult">
+        <item>Addition</item>
+        <item>Multiplication</item>
+    </string-array>
 </resources>

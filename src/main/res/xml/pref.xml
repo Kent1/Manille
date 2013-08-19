@@ -52,6 +52,13 @@
                 android:singleLine="true"
                 android:maxLines="1" />
 
+        <ListPreference
+                android:key="mult"
+                android:title="@string/setting_mult"
+                android:defaultValue="@string/default_mult"
+                android:entries="@array/setting_mult"
+                android:entryValues="@array/setting_mult"/>
+
     </PreferenceCategory>
 
 </PreferenceScreen>
