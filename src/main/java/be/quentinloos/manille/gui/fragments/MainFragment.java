@@ -3,6 +3,7 @@ package be.quentinloos.manille.gui.fragments;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -21,6 +22,7 @@ import be.quentinloos.manille.core.ManilleScore;
 import be.quentinloos.manille.core.ManilleTurns;
 import be.quentinloos.manille.gui.activities.MainActivity;
 import be.quentinloos.manille.gui.dialogs.AddTurnDialog;
+import be.quentinloos.manille.gui.dialogs.GameOverDialog;
 import be.quentinloos.manille.util.TurnAdapter;
 
 /**
@@ -43,6 +45,13 @@ public class MainFragment extends Fragment {
     }
 
     @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        if (((MainActivity) getActivity()).getManille().isEnded()) {
+            menu.getItem(0).setVisible(false);
+        }
+    }
+
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
        inflater.inflate(R.menu.fragment_main, menu);
     }
@@ -58,6 +67,7 @@ public class MainFragment extends Fragment {
            case R.id.action_remove:
                ((MainActivity) getActivity()).getManille().removeLastHand();
                refresh();
+               ActivityCompat.invalidateOptionsMenu(getActivity());
                return true;
           default:
              return super.onOptionsItemSelected(item);
@@ -98,6 +108,19 @@ public class MainFragment extends Fragment {
 
         pointsTeam1.setText(Integer.toString(manille.getScore()[0]));
         pointsTeam2.setText(Integer.toString(manille.getScore()[1]));
+
+        if(manille.isEnded()) {
+            int winner = manille.getWinner();
+            String teamWinner = "";
+            if (winner == 1)
+                teamWinner = preferences.getString("team1", getString(R.string.default_team1));
+            else if (winner == 2)
+                teamWinner = preferences.getString("team2", getString(R.string.default_team2));
+
+            DialogFragment gameOverDialog = GameOverDialog.newInstance(teamWinner, manille.getScore()[winner - 1]);
+            gameOverDialog.show(getActivity().getSupportFragmentManager(), "game over");
+            ActivityCompat.invalidateOptionsMenu(getActivity());
+        }
     }
 
     private String getTitle(Manille manille) {

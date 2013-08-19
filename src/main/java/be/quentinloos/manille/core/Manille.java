@@ -51,6 +51,15 @@ public abstract class Manille {
         score[1] += turn.getPoints2();
     }
 
+    public int getWinner() {
+        if (score[0] > score[1])
+            return 1;
+        else if (score[0] < score[1])
+            return 2;
+        else
+            return 0;
+    }
+
     /**
      * Is the end of game ?
      * @return true if the game is ended
