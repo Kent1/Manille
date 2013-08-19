@@ -5,10 +5,10 @@
     <string name="double_points">Double</string>
 
     <string-array name="trump">
-        <item>♣ Trèfles</item>
+        <item><font fgcolor="#ff000000">♣</font> Trèfles</item>
         <item><font fgcolor="#ffff0000">♦</font> Diamonds</item>
         <item><font fgcolor="#ffff0000">♥</font> Hearts</item>
-        <item>♠ Spades</item>
+        <item><font fgcolor="#ff000000">♠</font> Spades</item>
         <item>× Sans atout</item>
     </string-array>
     <string name="no_team_selected">Please select the team who choose the trump suit</string>

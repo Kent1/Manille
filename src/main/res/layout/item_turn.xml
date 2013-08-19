@@ -18,7 +18,8 @@
                 android:id="@+id/symbol1"
                 android:gravity="center"
                 android:textSize="24sp"
-                android:padding="@dimen/margin"/>
+                android:padding="@dimen/margin"
+                android:textColor="@color/green"/>
 
         <TextView
                 android:layout_width="fill_parent"
@@ -54,7 +55,8 @@
                 android:id="@+id/symbol2"
                 android:gravity="center"
                 android:textSize="24sp"
-                android:padding="@dimen/margin"/>
+                android:padding="@dimen/margin"
+                android:textColor="@color/green"/>
 
     </LinearLayout>
 

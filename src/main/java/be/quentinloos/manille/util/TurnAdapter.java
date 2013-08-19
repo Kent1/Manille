@@ -27,16 +27,17 @@ public class TurnAdapter extends ArrayAdapter<Turn> {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         ViewHolder holder;
+        Turn turn = getItem(position);
 
         if (convertView == null) {
             holder = new ViewHolder();
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_turn, null);
 
-            if (getItem(position).getTeam() == 1) {
+            if (turn.getTeam() == 1) {
                 holder.symbol1  = (TextView) convertView.findViewById(R.id.symbol1);
                 holder.symbol2  = (TextView) convertView.findViewById(R.id.symbol2);
             }
-            else if (getItem(position).getTeam() == 2) {
+            else if (turn.getTeam() == 2) {
                 holder.symbol1  = (TextView) convertView.findViewById(R.id.symbol2);
                 holder.symbol2  = (TextView) convertView.findViewById(R.id.symbol1);
             }
@@ -49,13 +50,23 @@ public class TurnAdapter extends ArrayAdapter<Turn> {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.symbol1.setText(getItem(position).getTrump().toString());
-        if (getItem(position).getTrump() == Turn.Trump.DIAMONDS || getItem(position).getTrump() == Turn.Trump.HEARTS)
+        // Display the trump suit symbol
+        holder.symbol1.setText(turn.getTrump().toString());
+        if (turn.getTrump() == Turn.Trump.DIAMONDS || turn.getTrump() == Turn.Trump.HEARTS)
             holder.symbol1.setTextColor(getContext().getResources().getColor(android.R.color.holo_red_dark));
-        holder.symbol2.setText("");
+        else if(turn.getTrump() == Turn.Trump.CLUBS || turn.getTrump() == Turn.Trump.SPADES || turn.getTrump() == Turn.Trump.NOTRUMP)
+            holder.symbol1.setTextColor(getContext().getResources().getColor(android.R.color.black));
+        // Display the multiplier
+        if (turn.getMult() > 1)
+            if (turn.getMultMode())
+                holder.symbol2.setText("x" + turn.getMult());
+            else
+                holder.symbol2.setText("x" + (int) Math.pow(2, turn.getMult() - 1));
+        else
+            holder.symbol2.setText("");
 
-        holder.points1.setText(Integer.toString(getItem(position).getPoints1()));
-        holder.points2.setText(Integer.toString(getItem(position).getPoints2()));
+        holder.points1.setText(Integer.toString(turn.getPoints1()));
+        holder.points2.setText(Integer.toString(turn.getPoints2()));
 
         return convertView;
     }
