@@ -1,8 +1,10 @@
+# Manille
+
 Manille est une application Android dont le but est d'utiliser son smartphone comme carnet de points pour le célèbre jeu de cartes, la manille. Fini de griffonner le verso d'un dessous verre en carton Jupiler, cette application deviendra indispensable chez tous les passionnés de manille.
 
 Cette application fonctionne sur Android 2.3.
 
-# Fonctionnalités
+## Fonctionnalités
 
 Les fonctionnalités actuelles de l'application sont :
 
@@ -20,12 +22,16 @@ Les fonctionnalités actuelles de l'application sont :
 
 ![](http://quentinloos.be/images/manille/manille1.png)
 
-# Contribuer
+## Contribuer
 
 N'hésitez pas à me faire part de vos remarques ou de proposer des ajouts de fonctionnalités et des corrections de bugs !
 
 La manille dispose d'énormément de variantes, et je l'ai implémentée comme moi je la joue, avec une tendance à pouvoir garder les scores de toutes les variantes possibles. Cependant n'hésitez pas à proposer votre façon de jouer si l'application ne correspond pas à vos besoins.
 
-# Licence
+## Site web de l'application
+
+http://quentinloos.be/projets/manille/
+
+## Licence
 
 Cette application est sous la GNU General Public License v3
