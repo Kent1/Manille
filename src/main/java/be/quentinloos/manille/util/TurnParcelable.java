@@ -25,7 +25,10 @@ public class TurnParcelable implements Parcelable {
     }
 
     public TurnParcelable(Parcel source) {
-        this.turn = new Turn(source.readInt(), source.readInt(), source.readInt(), Turn.Trump.valueOf(source.readString()));
+        boolean[] array = new boolean[1];
+        source.readBooleanArray(array);
+        boolean mult = array[0];
+        this.turn = new Turn(source.readInt(), source.readInt(), source.readInt(), Turn.Trump.valueOf(source.readString()), mult);
         turn.setMult(source.readInt());
     }
 
@@ -40,6 +43,7 @@ public class TurnParcelable implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeBooleanArray(new boolean[] { turn.getMultMode() });
         dest.writeInt(turn.getPoints1());
         dest.writeInt(turn.getPoints2());
         dest.writeInt(turn.getTeam());
