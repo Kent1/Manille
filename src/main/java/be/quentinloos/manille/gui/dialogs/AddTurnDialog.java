@@ -33,6 +33,8 @@ import be.quentinloos.manille.gui.activities.MainActivity;
  */
 public class AddTurnDialog extends DialogFragment {
 
+    SharedPreferences preferences;
+
     private RadioGroup rg;
     private EditText pointsTeam1, pointsTeam2;
     private Spinner spinner;
@@ -67,7 +69,7 @@ public class AddTurnDialog extends DialogFragment {
                 rg.check(R.id.radio_team1);
         }
 
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         r1.setText(preferences.getString("team1", getString(R.string.default_team1)));
         r2.setText(preferences.getString("team2", getString(R.string.default_team2)));
 
@@ -111,6 +113,12 @@ public class AddTurnDialog extends DialogFragment {
                         boolean double1 = ((CheckBox) view.findViewById(R.id.turn_double1)).isChecked();
                         boolean double2 = ((CheckBox) view.findViewById(R.id.turn_double2)).isChecked();
 
+                        // Wich team have chosen the trump suit
+                        int team = 0;
+                        if (rg.getCheckedRadioButtonId() == R.id.radio_team1)
+                            team = 1;
+                        else if (rg.getCheckedRadioButtonId() == R.id.radio_team2)
+                            team = 2;
                         Turn.Trump trump = Turn.Trump.values()[spinner.getSelectedItemPosition()];
 
                         // How many draw play before ?
@@ -118,14 +126,16 @@ public class AddTurnDialog extends DialogFragment {
                         if (manille.getNbrTurns() > 0 && manille.getTurns().get(manille.getNbrTurns() - 1).isDraw())
                             reportedMult += manille.getTurns().get(manille.getNbrTurns() - 1).getMult();
 
-                        int team = 0;
-                        if (rg.getCheckedRadioButtonId() == R.id.radio_team1)
-                            team = 1;
-                        else if (rg.getCheckedRadioButtonId() == R.id.radio_team2)
-                            team = 2;
+                        // multiplication factor
+                        String multStr = preferences.getString("mult", "Addition");
+                        boolean mult = false;
+                        if (multStr.equals("Addition"))
+                            mult = false;
+                        else if(multStr.equals("Multiplication"))
+                            mult = true;
 
                         try {
-                            manille.addTurn(new Turn(score1, score2, team, trump, double1, double2, reportedMult));
+                            manille.addTurn(new Turn(score1, score2, team, trump, double1, double2, reportedMult, mult));
                             ((MainActivity) getActivity()).refreshMainFragment();
                         } catch (IllegalArgumentException e) {
                             Toast.makeText(getActivity(), getString(R.string.exception_score), Toast.LENGTH_SHORT).show();
