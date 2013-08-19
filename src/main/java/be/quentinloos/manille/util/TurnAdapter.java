@@ -41,8 +41,14 @@ public class TurnAdapter extends ArrayAdapter<Turn> {
                 holder.symbol1  = (TextView) convertView.findViewById(R.id.symbol2);
                 holder.symbol2  = (TextView) convertView.findViewById(R.id.symbol1);
             }
+
             holder.points1 = (TextView) convertView.findViewById(R.id.scoreteam1);
             holder.points2 = (TextView) convertView.findViewById(R.id.scoreteam2);
+
+            if (turn.isDraw()) {
+                holder.points1.setTextColor(getContext().getResources().getColor(R.color.highlight));
+                holder.points2.setTextColor(getContext().getResources().getColor(R.color.highlight));
+            }
 
             convertView.setTag(holder);
         }

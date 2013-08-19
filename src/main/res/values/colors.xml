@@ -2,4 +2,5 @@
 <resources>
     <color name="text_on_green">#ececec</color>
     <color name="green">#23910d</color>
+    <color name="highlight">#ffa0d000</color>
 </resources>
