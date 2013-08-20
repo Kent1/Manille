@@ -65,9 +65,9 @@ public class TurnAdapter extends ArrayAdapter<Turn> {
         // Display the multiplier
         if (turn.getMult() > 1)
             if (turn.getMultMode())
-                holder.symbol2.setText("x" + turn.getMult());
-            else
                 holder.symbol2.setText("x" + (int) Math.pow(2, turn.getMult() - 1));
+            else
+                holder.symbol2.setText("x" + turn.getMult());
         else
             holder.symbol2.setText("");
 
