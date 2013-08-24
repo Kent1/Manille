@@ -61,8 +61,8 @@ public class MainFragment extends Fragment {
        // handle item selection
        switch (item.getItemId()) {
            case R.id.action_add:
-               DialogFragment turnDialog = AddTurnDialog.newInstance(R.string.action_add);
-               turnDialog.show(getActivity().getSupportFragmentManager(), "add a turn");
+               AddTurnDialog addTurnDialog = new AddTurnDialog();
+               addTurnDialog.show(getActivity().getSupportFragmentManager(), "add a turn");
                return true;
            case R.id.action_remove:
                ((MainActivity) getActivity()).getManille().removeLastHand();

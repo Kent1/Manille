@@ -37,18 +37,8 @@ public class AddTurnDialog extends DialogFragment {
     private EditText pointsTeam1, pointsTeam2;
     private Spinner spinner;
 
-    public static AddTurnDialog newInstance(int title) {
-        AddTurnDialog dialog = new AddTurnDialog();
-        Bundle args = new Bundle();
-        args.putInt("title", title);
-        dialog.setArguments(args);
-        return dialog;
-    }
-
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        int title = getArguments().getInt("title");
-
         LayoutInflater inflater = getActivity().getLayoutInflater();
         final View view = inflater.inflate(R.layout.dialog_add_turn, null);
 
@@ -86,7 +76,7 @@ public class AddTurnDialog extends DialogFragment {
         spinner.setAdapter(adapter);
 
         return new AlertDialog.Builder(this.getActivity())
-                .setTitle(title)
+                .setTitle(R.string.action_add)
                 .setView(view)
 
                 // Listener for the 'OK' button
