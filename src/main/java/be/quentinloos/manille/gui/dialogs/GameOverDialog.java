@@ -30,6 +30,7 @@ public class GameOverDialog extends DialogFragment {
                 .setTitle(R.string.title_dialog_game_over)
                 .setMessage(String.format(getString(R.string.message_dialog_game_over),
                         getArguments().get("team"), getArguments().get("points")))
+                .setInverseBackgroundForced(true)
 
                  // Listener for the 'OK' button
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {

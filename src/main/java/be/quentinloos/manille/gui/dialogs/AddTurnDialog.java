@@ -78,6 +78,7 @@ public class AddTurnDialog extends DialogFragment {
         return new AlertDialog.Builder(this.getActivity())
                 .setTitle(R.string.action_add)
                 .setView(view)
+                .setInverseBackgroundForced(true)
 
                 // Listener for the 'OK' button
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
