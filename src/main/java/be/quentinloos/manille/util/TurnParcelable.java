@@ -3,12 +3,6 @@ package be.quentinloos.manille.util;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.ArrayList;
-
-import be.quentinloos.manille.core.Manille;
-import be.quentinloos.manille.core.ManilleFree;
-import be.quentinloos.manille.core.ManilleScore;
-import be.quentinloos.manille.core.ManilleTurns;
 import be.quentinloos.manille.core.Turn;
 
 /**

@@ -9,7 +9,6 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -22,7 +21,6 @@ import android.widget.Toast;
 
 import be.quentinloos.manille.R;
 import be.quentinloos.manille.core.Manille;
-import be.quentinloos.manille.core.ManilleTurns;
 import be.quentinloos.manille.core.Turn;
 import be.quentinloos.manille.gui.activities.MainActivity;
 

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
@@ -17,9 +16,8 @@ import be.quentinloos.manille.core.Manille;
 import be.quentinloos.manille.core.ManilleFree;
 import be.quentinloos.manille.core.ManilleScore;
 import be.quentinloos.manille.core.ManilleTurns;
-import be.quentinloos.manille.core.Turn;
-import be.quentinloos.manille.util.ManilleParcelable;
 import be.quentinloos.manille.gui.fragments.MainFragment;
+import be.quentinloos.manille.util.ManilleParcelable;
 
 /**
  * Main Activity
@@ -55,6 +53,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         SpinnerAdapter mSpinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, array);
 
         ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
 
         actionBar.setListNavigationCallbacks(mSpinnerAdapter, this);
