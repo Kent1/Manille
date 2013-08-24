@@ -76,71 +76,71 @@ public class AddTurnDialog extends DialogFragment {
         spinner.setAdapter(adapter);
 
         return new AlertDialog.Builder(this.getActivity())
-                .setTitle(R.string.action_add)
-                .setView(view)
-                .setInverseBackgroundForced(true)
+            .setTitle(R.string.action_add)
+            .setView(view)
+            .setInverseBackgroundForced(true)
 
-                // Listener for the 'OK' button
-                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        int score1 = 0, score2 = 0;
+            // Listener for the 'OK' button
+            .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int id) {
+                    int score1 = 0, score2 = 0;
 
-                        if (rg.getCheckedRadioButtonId() == -1) {
-                            Toast.makeText(view.getContext(), getString(R.string.no_team_selected), Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-
-                        try {
-                            score1 = Integer.parseInt(pointsTeam1.getText().toString());
-                            score2 = Integer.parseInt(pointsTeam2.getText().toString());
-                        } catch (NumberFormatException e) {
-                            AddTurnDialog.this.getDialog().cancel();
-                            Toast.makeText(view.getContext(), getString(R.string.exception_score), Toast.LENGTH_SHORT).show();
-                        }
-
-                        boolean double1 = ((CheckBox) view.findViewById(R.id.turn_double1)).isChecked();
-                        boolean double2 = ((CheckBox) view.findViewById(R.id.turn_double2)).isChecked();
-
-                        // Wich team have chosen the trump suit
-                        int team = 0;
-                        if (rg.getCheckedRadioButtonId() == R.id.radio_team1)
-                            team = 1;
-                        else if (rg.getCheckedRadioButtonId() == R.id.radio_team2)
-                            team = 2;
-                        Turn.Trump trump = Turn.Trump.values()[spinner.getSelectedItemPosition()];
-
-                        // How many draw play before ?
-                        int reportedMult= 0;
-                        if (manille.getNbrTurns() > 0 && manille.getTurns().get(manille.getNbrTurns() - 1).isDraw())
-                            reportedMult += manille.getTurns().get(manille.getNbrTurns() - 1).getMult();
-
-                        // multiplication factor
-                        String multStr = preferences.getString("mult", "Addition");
-                        boolean mult = false;
-                        if (multStr.equals("Addition"))
-                            mult = false;
-                        else if(multStr.equals("Multiplication"))
-                            mult = true;
-
-                        try {
-                            manille.addTurn(new Turn(score1, score2, team, trump, double1, double2, reportedMult, mult));
-                            ((MainActivity) getActivity()).refreshMainFragment();
-                        } catch (IllegalArgumentException e) {
-                            Toast.makeText(getActivity(), getString(R.string.exception_score), Toast.LENGTH_SHORT).show();
-                        }
+                    if (rg.getCheckedRadioButtonId() == -1) {
+                        Toast.makeText(view.getContext(), getString(R.string.no_team_selected), Toast.LENGTH_SHORT).show();
+                        return;
                     }
-                })
 
-                // Listener for the 'Cancel' button
-                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
+                    try {
+                        score1 = Integer.parseInt(pointsTeam1.getText().toString());
+                        score2 = Integer.parseInt(pointsTeam2.getText().toString());
+                    } catch (NumberFormatException e) {
                         AddTurnDialog.this.getDialog().cancel();
+                        Toast.makeText(view.getContext(), getString(R.string.exception_score), Toast.LENGTH_SHORT).show();
                     }
-                })
 
-                .create();
+                    boolean double1 = ((CheckBox) view.findViewById(R.id.turn_double1)).isChecked();
+                    boolean double2 = ((CheckBox) view.findViewById(R.id.turn_double2)).isChecked();
+
+                    // Wich team have chosen the trump suit
+                    int team = 0;
+                    if (rg.getCheckedRadioButtonId() == R.id.radio_team1)
+                        team = 1;
+                    else if (rg.getCheckedRadioButtonId() == R.id.radio_team2)
+                        team = 2;
+                    Turn.Trump trump = Turn.Trump.values()[spinner.getSelectedItemPosition()];
+
+                    // How many draw play before ?
+                    int reportedMult= 0;
+                    if (manille.getNbrTurns() > 0 && manille.getTurns().get(manille.getNbrTurns() - 1).isDraw())
+                        reportedMult += manille.getTurns().get(manille.getNbrTurns() - 1).getMult();
+
+                    // multiplication factor
+                    String multStr = preferences.getString("mult", "Addition");
+                    boolean mult = false;
+                    if (multStr.equals("Addition"))
+                        mult = false;
+                    else if(multStr.equals("Multiplication"))
+                        mult = true;
+
+                    try {
+                        manille.addTurn(new Turn(score1, score2, team, trump, double1, double2, reportedMult, mult));
+                        ((MainActivity) getActivity()).refreshMainFragment();
+                    } catch (IllegalArgumentException e) {
+                        Toast.makeText(getActivity(), getString(R.string.exception_score), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            })
+
+            // Listener for the 'Cancel' button
+            .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int id) {
+                    AddTurnDialog.this.getDialog().cancel();
+                }
+            })
+
+            .create();
     }
 
     /**
