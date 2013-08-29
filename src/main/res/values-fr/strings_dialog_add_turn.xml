@@ -5,7 +5,7 @@
     <string name="double_points">Double</string>
 
     <string-array name="trump">
-        <item><font fgcolor="#ff000000">♣</font> Clubs</item>
+        <item><font fgcolor="#ff000000">♣</font> Trèfles</item>
         <item><font fgcolor="#ffff0000">♦</font> Carreaux</item>
         <item><font fgcolor="#ffff0000">♥</font> Coeurs</item>
         <item><font fgcolor="#ff000000">♠</font> Piques</item>
